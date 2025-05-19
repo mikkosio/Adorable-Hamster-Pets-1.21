@@ -1,0 +1,228 @@
+{
+  "item.adorablehamsterpets.cucumber": "Cucumber",
+  "item.adorablehamsterpets.cucumber_seeds": "Cucumber Seeds",
+  "item.adorablehamsterpets.cucumber_crop": "Cucumber Crop",
+  "item.adorablehamsterpets.sliced_cucumber": "Sliced Cucumber",
+  "item.adorablehamsterpets.green_beans": "Green Beans",
+  "item.adorablehamsterpets.green_bean_crop": "Green Bean Crop",
+  "item.adorablehamsterpets.green_bean_seeds": "Green Bean Seeds",
+  "item.adorablehamsterpets.steamed_green_beans": "Steamed Green Beans",
+  "item.adorablehamsterpets.sunflower_seeds": "Sunflower Seeds",
+  "item.adorablehamsterpets.cheese": "§eCheese§",
+  "item.adorablehamsterpets.hamster_food_mix": "Hamster Food Mix",
+  "item.adorablehamsterpets.hamster_spawn_egg": "Hamster Spawn Egg",
+
+
+  "entity.adorablehamsterpets.hamster": "Hamster",
+
+
+  "itemgroup.adorablehamsterpets.main": "Adorable Hamster Pets",
+
+
+  "entity.adorablehamsterpets.hamster.inventory_title": "Hamster Inventory",
+
+
+  "item.adorablehamsterpets.hamster_guide_book": "§f§lHamster Tips:§r§6§o Guidebook to the Tiny, Furry Heart§r",
+  "tooltip.adorablehamsterpets.hamster_guide_book.hint1": "Can be crafted with Sliced Cucumber and a Book.",
+
+
+  "block.adorablehamsterpets.wild_green_bean_bush": "Wild Green Bean Bush",
+  "block.adorablehamsterpets.wild_cucumber_bush": "Wild Cucumber Bush",
+  "block.adorablehamsterpets.sunflower_block": "Sunflower",
+
+
+  "block.adorablehamsterpets.wild_green_bean_bush.hint1": "Yields seeds. Seeds for... enhancement of certain small mammals.",
+  "block.adorablehamsterpets.wild_green_bean_bush.hint2": "Right-click. Maybe. If it's ready.",
+
+
+  "block.adorablehamsterpets.wild_cucumber_bush.hint1": "Drops seeds. Seeds that might help you make small friends.",
+  "block.adorablehamsterpets.wild_cucumber_bush.hint2": "Interact with it. Gently. It's sensitive.",
+
+
+  "block.adorablehamsterpets.sunflower_block.hint1": "Sometimes yields seeds... key recipe ingredients?",
+  "block.adorablehamsterpets.sunflower_block.hint2": "Requires time to replenish its seedy bounty.",
+
+
+  "tooltip.adorablehamsterpets.green_bean_seeds.hint1": "Plant these to grow beans. Beans that empower...",
+  "tooltip.adorablehamsterpets.green_bean_seeds.hint2": "Requires commitment. And maybe some dirt.",
+
+
+  "tooltip.adorablehamsterpets.cucumber_seeds.hint1": "Grow cucumbers. Cucumbers that might... persuade?",
+  "tooltip.adorablehamsterpets.cucumber_seeds.hint2": "Just add water, soil, and existential dread.",
+
+
+  "tooltip.adorablehamsterpets.sunflower_seeds.hint1": "Apparently important for certain food mixes.",
+  "tooltip.adorablehamsterpets.sunflower_seeds.hint2": "Can also be used as a basic snack.",
+
+
+  "tooltip.adorablehamsterpets.cucumber.hint1": "Crunchy. Refreshing. Potentially influential.",
+  "tooltip.adorablehamsterpets.cucumber.hint2": "Try preparing it at a crafting table...",
+
+
+  "tooltip.adorablehamsterpets.sliced_cucumber.hint1": "The key to a tiny, furry heart. Or at least, their attention.",
+  "tooltip.adorablehamsterpets.sliced_cucumber.hint2": "A gentle, sneaky approach might be required.",
+
+
+  "tooltip.adorablehamsterpets.green_beans.hint1": "A simple veggie. Can be cooked for... interesting results.",
+  "tooltip.adorablehamsterpets.green_beans.hint2": "Eat them raw if you enjoy disappointment.",
+
+
+  "tooltip.adorablehamsterpets.steamed_green_beans.hint1": "Gives hamsters a sudden burst of... enthusiasm?",
+  "tooltip.adorablehamsterpets.steamed_green_beans.hint2": "The effect isn't permanent. Nothing ever is, except taxes.",
+
+
+  "tooltip.adorablehamsterpets.hamster_food_mix.hint1": "So good, even the pickiest hamster can't refuse.",
+  "tooltip.adorablehamsterpets.hamster_food_mix.hint2": "Use it when they're being difficult. Or just hungry.",
+
+
+  "tooltip.adorablehamsterpets.cheese.hint1": "A culinary masterpiece. Irresistible to small, furry opportunists.",
+  "tooltip.adorablehamsterpets.cheese.hint2": "Wave it around in front of a hamster and see what happens.",
+
+
+  "key.category.adorablehamsterpets.main": "Adorable Hamster Pets",
+  "key.adorablehamsterpets.throw_hamster": "Throw Hamster",
+
+
+  "message.adorablehamsterpets.throw_cooldown": "Your hamster needs a break— try again in %d minute and %d seconds.",
+  "message.adorablehamsterpets.baby_throw_refusal": "Your baby hamster clings tightly, refusing to become a furry cannonball. Perhaps wait until it's older?",
+  "message.adorablehamsterpets.beans_cooldown": "Your hamster hasn't calmed down enough from last time yet. (%d min %d sec left).",
+  "message.adorablehamsterpets.creeper_detected": "Your hamster senses a creeper approaching!",
+  "message.adorablehamsterpets.diamond_nearby": "Your hamster smells diamond ore nearby.",
+  "message.adorablehamsterpets.sweet_potato_secret": "Sweet Potato? An inspired name. Very well.",
+  "message.adorablehamsterpets.dismount.1": "Hamster dismounted. Back to business.",
+  "message.adorablehamsterpets.dismount.2": "Your furry co-pilot has touched down.",
+  "message.adorablehamsterpets.dismount.3": "Shoulder vacant. The hamster has other plans.",
+  "message.adorablehamsterpets.dismount.4": "Hamster deployed. Or it just fancied a walk.",
+  "message.adorablehamsterpets.dismount.5": "One less passenger. Your hamster is now free-range.",
+  "message.adorablehamsterpets.dismount.6": "The hamster returns to terrestrial navigation.",
+  "message.adorablehamsterpets.cheek_pouch_locked": "This hamster's cheek pouches are currently shy. A gourmet meal might change its mind...",
+
+
+  "subtitles.adorablehamsterpets.hamster_attack": "Hamster attacks",
+  "subtitles.adorablehamsterpets.hamster_beg": "Hamster begs",
+  "subtitles.adorablehamsterpets.hamster_death": "Hamster dies",
+  "subtitles.adorablehamsterpets.hamster_hurt": "Hamster hurts",
+  "subtitles.adorablehamsterpets.hamster_idle": "Hamster squeaks",
+  "subtitles.adorablehamsterpets.hamster_sleep": "Hamster sleeps",
+  "subtitles.adorablehamsterpets.hamster_sniff": "Hamster sniffs",
+  "subtitles.adorablehamsterpets.hamster_creeper_detect": "Hamster alerts",
+  "subtitles.adorablehamsterpets.hamster_celebrate": "Hamster celebrates",
+  "subtitles.adorablehamsterpets.hamster_throw": "Hamster Thrown",
+  "subtitles.adorablehamsterpets.hamster_impact": "Hamster Impacts",
+  "subtitles.adorablehamsterpets.hamster_flying": "Hamster Squeaks (Airborne)",
+  "subtitles.adorablehamsterpets.hamster_wake_up": "Hamster wakes up",
+  "subtitles.adorablehamsterpets.cheese_use": "Cheese rustles",
+  "subtitles.adorablehamsterpets.cheese_eat": "Player eats cheese",
+
+
+
+
+
+  "text.config.adorablehamsterpets.title": "Adorable Hamster Pets Config",
+
+  "text.config.adorablehamsterpets.section.Spawning": "Spawning",
+  "text.config.adorablehamsterpets.category.spawning": "Spawning",
+  "text.config.adorablehamsterpets.option.spawning.hamsterSpawnWeight": "Hamster Spawn Weight",
+  "text.config.adorablehamsterpets.option.spawning.hamsterSpawnWeight.tooltip": "Adjusts hamster spawn frequency. Higher = more chaos. 0 = blissful silence.",
+  "text.config.adorablehamsterpets.option.spawning.hamsterMaxGroupSize": "Max Group Size",
+  "text.config.adorablehamsterpets.option.spawning.hamsterMaxGroupSize.tooltip": "Maximum hamsters per spawn group. Because sometimes one just isn't cute enough.",
+
+  "text.config.adorablehamsterpets.section.Behavior": "Behavior",
+  "text.config.adorablehamsterpets.category.behavior": "Behavior",
+  "text.config.adorablehamsterpets.option.behavior.hamsterMeleeDamage": "Melee Damage",
+  "text.config.adorablehamsterpets.option.behavior.hamsterMeleeDamage.tooltip": "Tamed hamster melee damage. Mostly for show, let's be honest.",
+  "text.config.adorablehamsterpets.option.behavior.tamingChanceDenominator": "Taming Chance Denominator",
+  "text.config.adorablehamsterpets.option.behavior.tamingChanceDenominator.tooltip": "Taming difficulty (1 in X chance). Higher means more cucumbers sacrificed to the RNG gods.",
+  "text.config.adorablehamsterpets.option.behavior.hamsterFoodMixHealing": "Food Mix Healing",
+  "text.config.adorablehamsterpets.option.behavior.hamsterFoodMixHealing.tooltip": "Healing amount from Hamster Food Mix. The good stuff.",
+  "text.config.adorablehamsterpets.option.behavior.standardFoodHealing": "Standard Food Healing",
+  "text.config.adorablehamsterpets.option.behavior.standardFoodHealing.tooltip": "Healing from basic seeds/crops. Better than nothing... probably.",
+
+  "text.config.adorablehamsterpets.section.Cooldowns": "Cooldowns",
+  "text.config.adorablehamsterpets.category.cooldowns": "Cooldowns",
+  "text.config.adorablehamsterpets.option.cooldowns.hamsterThrowCooldown": "Throw Cooldown (Ticks)",
+  "text.config.adorablehamsterpets.option.cooldowns.hamsterThrowCooldown.tooltip": "Cooldown (ticks) after using a hamster as a projectile. Give it a moment. (20 ticks = 1s)",
+  "text.config.adorablehamsterpets.option.cooldowns.steamedGreenBeansBuffCooldown": "Green Bean Buff Cooldown (Ticks)",
+  "text.config.adorablehamsterpets.option.cooldowns.steamedGreenBeansBuffCooldown.tooltip": "Cooldown (ticks) before Steamed Green Bean buffs can be reapplied. Patience.",
+  "text.config.adorablehamsterpets.option.cooldowns.breedingCooldownTicks": "Breeding Cooldown (Ticks)",
+  "text.config.adorablehamsterpets.option.cooldowns.breedingCooldownTicks.tooltip": "Breeding cooldown (ticks) for hamsters. They need their space.",
+
+  "text.config.adorablehamsterpets.section.Features": "Features",
+  "text.config.adorablehamsterpets.category.features": "Features",
+  "text.config.adorablehamsterpets.option.features.enableSweetPotatoEasterEgg": "Enable 'Sweet Potato' Easter Egg",
+  "text.config.adorablehamsterpets.option.features.enableSweetPotatoEasterEgg.tooltip": "Enable the 'Sweet Potato' name tag easter egg? Sure, why not.",
+  "text.config.adorablehamsterpets.option.features.enableShoulderCreeperDetection": "Enable Shoulder Creeper Detection",
+  "text.config.adorablehamsterpets.option.features.enableShoulderCreeperDetection.tooltip": "Allow shoulder hamsters to detect Creepers? Might save your inventory.",
+  "text.config.adorablehamsterpets.option.features.enableShoulderDiamondDetection": "Enable Shoulder Diamond Detection",
+  "text.config.adorablehamsterpets.option.features.enableShoulderDiamondDetection.tooltip": "Allow shoulder hamsters to detect Diamonds? Or do you enjoy the surprise?",
+  "text.config.adorablehamsterpets.option.features.shoulderDiamondDetectionRadius": "Shoulder Diamond Radius",
+  "text.config.adorablehamsterpets.option.features.shoulderDiamondDetectionRadius.tooltip": "Shoulder Diamond detection radius (blocks). How close do you need to be?",
+  "text.config.adorablehamsterpets.option.features.shoulderCreeperDetectionRadius": "Shoulder Creeper Radius",
+  "text.config.adorablehamsterpets.option.features.shoulderCreeperDetectionRadius.tooltip": "Shoulder Creeper detection radius (blocks). Adjust paranoia levels.",
+  "text.config.adorablehamsterpets.option.features.hamsterThrowDamage": "Throw Damage",
+  "text.config.adorablehamsterpets.option.features.hamsterThrowDamage.tooltip": "Damage dealt by thrown hamster. Surprisingly, the default value is exactly enough to kill a creeper. What a coincidence.",
+  "text.config.adorablehamsterpets.option.features.enableHamsterThrowing": "Enable Hamster Throwing",
+  "text.config.adorablehamsterpets.option.features.enableHamsterThrowing.tooltip": "Enable hamster throwing? ('G' key default). Use responsibly. Or don't.",
+
+  "text.config.adorablehamsterpets.section.World Generation": "World Gen",
+  "text.config.adorablehamsterpets.category.worldGen": "World Gen",
+  "text.config.adorablehamsterpets.option.worldGen.sunflowerRegrowthModifier": "Sunflower Regrowth Modifier",
+  "text.config.adorablehamsterpets.option.worldGen.sunflowerRegrowthModifier.tooltip": "Sunflower seed regrowth speed. Higher values make it slower; lower values make it faster. Makes perfect sense.",
+  "text.config.adorablehamsterpets.option.worldGen.wildBushRegrowthModifier": "Wild Bush Regrowth Modifier",
+  "text.config.adorablehamsterpets.option.worldGen.wildBushRegrowthModifier.tooltip": "Wild bush seed regrowth speed. Higher values make it slower; lower values make it faster. Makes perfect sense.",
+  "text.config.adorablehamsterpets.option.worldGen.wildGreenBeanBushRarity": "Green Bean Bush Rarity",
+  "text.config.adorablehamsterpets.option.worldGen.wildGreenBeanBushRarity.tooltip": "Wild green bean bush rarity (1 in X chunks). WARNING: Low values (1-5) might cause... bush spam.",
+  "text.config.adorablehamsterpets.option.worldGen.wildCucumberBushRarity": "Cucumber Bush Rarity",
+  "text.config.adorablehamsterpets.option.worldGen.wildCucumberBushRarity.tooltip": "Wild cucumber bush rarity (1 in X chunks). WARNING: Ditto on the bush incidents.",
+
+  "text.config.adorablehamsterpets.section.Buffs": "Buffs",
+  "text.config.adorablehamsterpets.category.buffs": "Buffs",
+  "text.config.adorablehamsterpets.option.buffs.greenBeanBuffDuration": "Green Bean Buff Duration (Ticks)",
+  "text.config.adorablehamsterpets.option.buffs.greenBeanBuffDuration.tooltip": "Duration (ticks) of the Steamed Green Bean buff. Fleeting power.",
+  "text.config.adorablehamsterpets.option.buffs.greenBeanBuffAmplifierSpeed": "Green Bean Buff Speed Level",
+  "text.config.adorablehamsterpets.option.buffs.greenBeanBuffAmplifierSpeed.tooltip": "Speed boost level (0=I, 1=II...) from beans. Gotta go fast?",
+  "text.config.adorablehamsterpets.option.buffs.greenBeanBuffAmplifierStrength": "Green Bean Buff Strength Level",
+  "text.config.adorablehamsterpets.option.buffs.greenBeanBuffAmplifierStrength.tooltip": "Strength boost level (0=I, 1=II...) from beans. For slightly mightier nibbles.",
+  "text.config.adorablehamsterpets.option.buffs.greenBeanBuffAmplifierAbsorption": "Green Bean Buff Absorption Level",
+  "text.config.adorablehamsterpets.option.buffs.greenBeanBuffAmplifierAbsorption.tooltip": "Absorption boost level (0=I, 1=II...) from beans. Extra fluff padding.",
+  "text.config.adorablehamsterpets.option.buffs.greenBeanBuffAmplifierRegen": "Green Bean Buff Regen Level",
+  "text.config.adorablehamsterpets.option.buffs.greenBeanBuffAmplifierRegen.tooltip": "Regeneration boost level (0=I, 1=II...) from beans. Heals minor paper-cuts.",
+
+  "text.config.adorablehamsterpets.section.UI & Quality of Life": "UI & Quality of Life",
+  "text.config.adorablehamsterpets.category.uiTweaks": "UI & Quality of Life",
+  "text.config.adorablehamsterpets.option.uiTweaks.enableItemTooltips": "Enable Mod Item Tooltips",
+  "text.config.adorablehamsterpets.option.uiTweaks.enableItemTooltips.tooltip": "Show helpful tooltips on hamster-related items and blocks? Your call. I'm not your conscience.",
+  "text.config.adorablehamsterpets.option.uiTweaks.enableAutoGuidebookDelivery": "Enable Auto Guidebook Delivery. Tips accepted.",
+  "text.config.adorablehamsterpets.option.uiTweaks.enableAutoGuidebookDelivery.tooltip": "Automatically give players the 'Hamster Tips' guidebook when they first join a world.",
+  "text.config.adorablehamsterpets.option.uiTweaks.enableShoulderDismountMessages": "Enable Shoulder Dismount Messages",
+  "text.config.adorablehamsterpets.option.uiTweaks.enableShoulderDismountMessages.tooltip": "Show a message when your hamster dismounts from your shoulder? Some find it helpful, others... less so.",
+  "text.config.adorablehamsterpets.option.features.requireFoodMixToUnlockCheeks": "Require Food Mix to Unlock Cheek Pouches",
+  "text.config.adorablehamsterpets.option.features.requireFoodMixToUnlockCheeks.tooltip": "If true (default), cheek pouches unlock per hamster after its first 'Hamster Food Mix'. If false, pouches are always usable. Note: Toggling this ON after it was OFF will re-lock pouches for hamsters not yet fed Food Mix.",
+
+  "advancements.adorablehamsterpets.husbandry.root.title": "The Hamster Life",
+  "advancements.adorablehamsterpets.husbandry.root.description": "Welcome to your new life as a rodent enthusiast. We won't judge.",
+  "advancements.adorablehamsterpets.husbandry.craft_bait.title": "The Bait",
+  "advancements.adorablehamsterpets.husbandry.craft_bait.description": "Transform a humble cucumber into Sliced Cucumber. Rodents go nuts for it.",
+  "advancements.adorablehamsterpets.husbandry.craft_food_mix.title": "Pocket Snacks",
+  "advancements.adorablehamsterpets.husbandry.craft_food_mix.description": "Whip up some Hamster Food Mix. This is a great opportunity to say 'peckish.' What a fun word.",
+  "advancements.adorablehamsterpets.husbandry.seed_money.title": "Seed Money",
+  "advancements.adorablehamsterpets.husbandry.seed_money.description": "Acquire Cucumber Seeds. The first step to gaining a tiny, squeaky companion.",
+  "advancements.adorablehamsterpets.husbandry.tame_hamster.title": "A Furry Shadow",
+  "advancements.adorablehamsterpets.husbandry.tame_hamster.description": "Successfully domesticate a wild hamster. May your ankles be ever safe.",
+  "advancements.adorablehamsterpets.husbandry.sunflower_hoarder.title": "Sunflower Hoarder",
+  "advancements.adorablehamsterpets.husbandry.sunflower_hoarder.description": "Gather Sunflower Seeds. They look innocent, but they're part of a larger, fluffier scheme.",
+  "advancements.adorablehamsterpets.husbandry.cheeky_storage.title": "A Trustworthy Face",
+  "advancements.adorablehamsterpets.husbandry.cheeky_storage.description": "That special Food Mix did the trick! Your hamster now deems you worthy of its cheek-based cargo services.",
+  "advancements.adorablehamsterpets.husbandry.shoulder_hamster.title": "Shoulder Surfer",
+  "advancements.adorablehamsterpets.husbandry.shoulder_hamster.description": "Convince a hamster that your shoulder is prime real estate. Hint: Cheese helps.",
+  "advancements.adorablehamsterpets.husbandry.throw_hamster.title": "The Hamster Yeet™",
+  "advancements.adorablehamsterpets.husbandry.throw_hamster.description": "Unleash your shoulder trebuchet. Bonus points for direct Creeper hits. (No hamsters were *terminally harmed in the making of this feature.)",
+  "advancements.adorablehamsterpets.husbandry.green_bean_gardener.title": "Green Bean Gardener",
+  "advancements.adorablehamsterpets.husbandry.green_bean_gardener.description": "Procure Green Bean Seeds. These aren't your average beans.",
+  "advancements.adorablehamsterpets.husbandry.steamy_greens.title": "Steamy Greens",
+  "advancements.adorablehamsterpets.husbandry.steamy_greens.description": "Cook up some Green Beans. They smell... suspiciously energizing.",
+  "advancements.adorablehamsterpets.husbandry.supercharged_squeaker.title": "Supercharged Squeaker",
+  "advancements.adorablehamsterpets.husbandry.supercharged_squeaker.description": "Feed your hamster Steamed Green Beans and witness a temporary burst of... ambition.",
+  "advancements.adorablehamsterpets.technical.crafted_guide_book.title": "The Sacred Texts",
+  "advancements.adorablehamsterpets.technical.crafted_guide_book.description": "You've crafted the sacred texts of hamster lore. Well done."
+}
