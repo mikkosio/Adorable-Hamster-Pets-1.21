@@ -44,7 +44,7 @@ Prepare for a veritable explosion of fur colors! With nine base coats and eight 
 <details>
 <summary>Taming & Sitting</summary>
 
-Bribe them with enough Sliced Cucumber, and they'll follow you like a furry, ankle-biting shadow. Right-click to make them sit, lest they develop a sudden fascination with the nearest lava pool. Again. They might even doze off if left sitting long enough (a future aspiration, anyway).
+Bribe them with enough Sliced Cucumber, and they'll follow you like a furry, ankle-biting shadow. Right-click to make them sit, lest they develop a sudden fascination with the nearest lava pool. Again. In the next update, they will even doze off if left sitting long enough.
 </details>
 
 <details>
