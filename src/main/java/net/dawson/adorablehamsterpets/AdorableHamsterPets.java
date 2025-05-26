@@ -100,7 +100,7 @@ public class AdorableHamsterPets implements ModInitializer {
 		ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
 			ServerPlayerEntity player = handler.player;
 
-			if (AdorableHamsterPets.CONFIG.uiTweaks.enableAutoGuidebookDelivery()) {
+			if (AdorableHamsterPets.CONFIG.uiPreferences.enableAutoGuidebookDelivery()) {
 				PlayerAdvancementTracker advancementTracker = player.getAdvancementTracker();
 
 				Identifier flagAdvId = Identifier.of(MOD_ID, "technical/has_received_initial_guidebook");
@@ -188,17 +188,17 @@ public class AdorableHamsterPets implements ModInitializer {
 		LOGGER.debug("[ServerPacketHandler] handleSpawnAttackParticlesPacket invoked. Spawning at ({}, {}, {})", payload.x(), payload.y(), payload.z());
 
 		if (world != null) {
-			// Spawn POOF particles at the *coordinates received from the client*
+			// Spawn CRIT particles at the *coordinates received from the client*
 			world.spawnParticles(
-					ParticleTypes.POOF, // The particle type
+					ParticleTypes.CRIT, // The particle type
 					payload.x(),        // Use X from payload
 					payload.y(),        // Use Y from payload
 					payload.z(),        // Use Z from payload
-					5,                  // Number of particles
+					10,                  // Number of particles
 					0.1,                // Spread in X
-					0.1,                // Spread in Y
+					0.2,                // Spread in Y
 					0.1,                // Spread in Z
-					0.02                // Speed/Velocity of particles
+					0.05                // Speed/Velocity of particles
 			);
 		} else {
 			// Corrected log message for clarity

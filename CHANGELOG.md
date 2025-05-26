@@ -15,6 +15,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - 
+---
+
+## [1.1.1] - 2025-05-26
+
+### Added
+- **Advanced Sleep System for Tamed Hamsters:**
+  - Tamed hamsters, when commanded to sit, may now gradually drift off to sleep through a new multi-stage "Path to Slumber" animation sequence.
+  - Features new animations: `anim_hamster_drifting_off` (a long, gradual doze), `anim_hamster_settle_sleep1/2/3` (short transitions), and three distinct looping sleep poses (`anim_hamster_sleep_pose1/2/3`).
+  - Sleep sequence is influenced by daytime (configurable), nearby threats, and how long they've been sitting.
+  - Player interactions (feeding, inventory, etc.) will now wake up a dozing/sleeping tamed hamster.
+- **Configurable Sleep Timings:** New options in Mod Menu config to adjust how long tamed hamsters sit before trying to sleep, their threat detection radius for sleep, and whether daytime is required for them to get drowsy.
+- **Pink Petal Cycling & Shear Removal:**
+  - Right-clicking a tamed hamster with Pink Petals now cycles through three different petal decoration styles.
+  - Pink petal decorations can now be removed by right-clicking the hamster with Shears (drops one pink petal).
+- **Hamster Water & Fire Avoidance:** Hamsters will now try to pathfind around water, fire, and lava, making them a bit safer. Lol.
+- **Shoulder Riding Sounds:**
+  - Added new unique sound effects when a hamster mounts the player's shoulder (via cheese interaction).
+  - Added a distinct sound effect when a hamster dismounts from the shoulder.
+- **New Advancements:**
+  - "Petal Pusher": Awarded for decorating a hamster with pink petals. Includes subtle sound/particle effects on first application.
+  - "Pocket Paramedic": Awarded when a hamster successfully auto-feeds from its cheek pouch.
+  - "Nose for Treasure": Awarded when a shoulder hamster first alerts the player to nearby diamonds.
+  - "Impending Doom Squeak": Awarded when a shoulder hamster first alerts the player to a targeting Creeper.
+  - "Chipmunk Aspirations": Awarded when a player fills all slots in a hamster's cheek pouch.
+- **"Sweet Potato" Easter Egg (Advancement-Based):**
+  - Naming a hamster "Sweet Potato" now triggers special effects (sound, particles, message) via a hidden advancement. This is a one-time effect per player. I added this for my wife since the entire mod is based on her real life hamster named Sweet Potato. She doesn't read change logs so she'll never see this. Hehe.
+
+### Changed
+- **Hamster Auto-Eating Delay:** Introduced a 2-second delay before a hamster begins to auto-eat from its cheek pouch when injured, giving players a better chance to notice the action and its effects.
+- **Hamster Auto-Eating Cooldown:** Increased the cooldown after a successful auto-eat to 3 seconds (60 ticks). It was a bit overpowered.
+- **Hamster Melee Attack Particles:** Changed from "poof" particles to "crit" particles, because poof particles already spawn when the attacked entity dies. Let me know If you're reading this and you have ideas for particles I should add to any of the other animations. I'm all ears! 
+- **Hamster Textures:** Subtle visual enhancement to the area between the hamster's eyes for increased cuteness, especially noticeable during sleep.
+- **Configuration Screen Reorganization:** Restructured the Mod Menu config screen with more descriptive top-level sections and logical sub-headers for improved clarity and ease of use. (All your settings are still there, just better organized!)
+- **Wild Hamster Sleep Animation:** Wild hamsters now use a new `anim_hamster_wild_settle_sleep` transition animation before entering their looping sleep pose (`anim_hamster_sleep_pose1`).
+
+### Fixed
+- **Sliding Sit Bug:** Fixed an issue where tamed hamsters would appear to slide while in their sitting animation if they stood up to defend their owner. Animations now correctly sync with their actual sitting/standing state.
+- **Body Rotation While Sitting/Sleeping/KO'd:** Hamsters will no longer rotate their bodies to look at entities while they are in a sitting, sleeping, or knocked-out state.
+- **Hamster Targeting:**
+  - Tamed hamsters will no longer attack other animals owned by the same player (including horses, wolves, cats, etc.) when commanded by the owner.
+  - Tamed hamsters will no longer retaliate against other animals owned by the same player if accidentally hit by them.
+- **Shoulder Mounting Sound:** Cheese use sound now plays at the hamster's last location, while the new hamster mount sound plays near the player's ear.
 
 ---
 
@@ -78,6 +120,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Numerous hamster sound effect variations used for testing which were not intended to be present in the released version of the mod.
 - Shoulder-mounted hamsters no longer dismount when the player takes damage.
+
 ---
 
 ## [1.0.1] - 2025-05-10

@@ -13,7 +13,7 @@ public class HamsterTemptGoal extends TemptGoal {
     // --- 1. Fields ---
     private final HamsterEntity hamster;
     private final Predicate<ItemStack> temptPredicate; // Stores the item predicate for tempting
-    private int recheckTimer = 0; // Timer to control frequency of begging state updates
+    private int recheckTimer = 0; // Frequency of begging state updates
 
     // --- 2. Constructors ---
     public HamsterTemptGoal(HamsterEntity hamster, double speed, Predicate<ItemStack> predicate, boolean canBeScared) {
@@ -63,19 +63,14 @@ public class HamsterTemptGoal extends TemptGoal {
         super.tick(); // Handles pathfinding towards the player and looking at them.
 
         // --- Begging State Logic ---
-        // Periodically update the hamster's begging state based on the tempting player.
         if (this.recheckTimer > 0) {
             this.recheckTimer--;
-            return; // Don't update begging state every tick.
+            return;
         }
         this.recheckTimer = 5; // Re-check begging state roughly every 5 ticks.
 
         World world = this.hamster.getWorld();
         // Begging state is visual and primarily client-driven by animation,
-        // but the server needs to set the DataTracker for the animation controller.
-        // No need for `if (world.isClient()) return;` here as DataTracker updates are server-side.
-
-        // `this.closestPlayer` is set by the superclass (TemptGoal).
         PlayerEntity temptingPlayer = this.closestPlayer;
 
         if (temptingPlayer != null && temptingPlayer.isAlive() && this.hamster.squaredDistanceTo(temptingPlayer) < 64.0) {
@@ -91,12 +86,9 @@ public class HamsterTemptGoal extends TemptGoal {
     @Override
     public void stop() {
         super.stop(); // Calls vanilla TemptGoal's stop logic (clears navigation, sets cooldown).
-
-        // --- Clean Up Begging State ---
         // Explicitly ensure begging state is false when the goal stops for any reason.
         this.hamster.setBegging(false);
-        this.recheckTimer = 0; // Reset the recheck timer.
-        // --- End Clean Up ---
+        this.recheckTimer = 0;
     }
 
     // --- 4. Private Helper Methods ---

@@ -65,7 +65,7 @@ public class ModBlocks {
             @Override
             public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
                 // --- Config Check for Tooltips ---
-                if (AdorableHamsterPets.CONFIG.uiTweaks.enableItemTooltips()) {
+                if (AdorableHamsterPets.CONFIG.uiPreferences.enableItemTooltips()) {
                     String translationKey = this.getTranslationKey(stack); // e.g., "block.adorablehamsterpets.wild_green_bean_bush"
                     // Check which block it is to apply specific hints
                     if (block instanceof WildGreenBeanBushBlock || block instanceof WildCucumberBushBlock) {

@@ -61,7 +61,7 @@ public class SunflowerBlock extends TallFlowerBlock implements Fertilizable {
             // Access the stored config instance from the main mod class
             final ModConfig config = AdorableHamsterPets.CONFIG;
 
-            double modifier = config.worldGen.sunflowerRegrowthModifier();
+            double modifier = config.worldGenAdjustments.sunflowerRegrowthModifier();
             modifier = Math.max(0.1, modifier);
 
             int baseRegrowthChanceDenominator = 150;

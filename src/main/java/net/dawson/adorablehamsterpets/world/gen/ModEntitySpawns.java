@@ -124,9 +124,9 @@ public class ModEntitySpawns {
                 combinedSelector,
                 SpawnGroup.CREATURE,
                 ModEntities.HAMSTER,
-                config.spawning.hamsterSpawnWeight(),
+                config.hamsterSpawning.spawnWeight(),
                 1,
-                config.spawning.hamsterMaxGroupSize()
+                config.hamsterSpawning.maxGroupSize()
         );
         // --- End 3. Add Spawn Modification ---
 

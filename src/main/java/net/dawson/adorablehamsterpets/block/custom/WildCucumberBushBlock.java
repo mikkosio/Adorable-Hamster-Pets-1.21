@@ -70,7 +70,7 @@ public class WildCucumberBushBlock extends PlantBlock {
         if (!state.get(SEEDED)) {
             // --- Use Config Value for Regrowth Chance ---
             final ModConfig config = AdorableHamsterPets.CONFIG; // Access static config
-            double modifier = config.worldGen.wildBushRegrowthModifier();
+            double modifier = config.worldGenAdjustments.wildBushRegrowthModifier();
             modifier = Math.max(0.1, modifier); // Ensure positive modifier
 
             int baseRegrowthChanceDenominator = 5; // Default 1 in 5 chance

@@ -95,7 +95,7 @@ public class HamsterMateGoal extends Goal {
 
         // --- Use Config Value for Breeding Cooldown ---
         final ModConfig config = AdorableHamsterPets.CONFIG;
-        int cooldown = config.cooldowns.breedingCooldownTicks();
+        int cooldown = config.hamsterBehavior.breedingCooldownTicks();
         this.hamster.setBreedingAge(cooldown);
         this.targetMate.setBreedingAge(cooldown);
         // --- End Use Config Value ---

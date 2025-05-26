@@ -4,7 +4,7 @@ import io.wispforest.owo.config.annotation.Config;
 import io.wispforest.owo.config.annotation.Modmenu;
 import io.wispforest.owo.config.annotation.Nest;
 import io.wispforest.owo.config.annotation.RangeConstraint;
-import io.wispforest.owo.config.annotation.SectionHeader; // Corrected import
+import io.wispforest.owo.config.annotation.SectionHeader;
 import blue.endless.jankson.Comment;
 import net.dawson.adorablehamsterpets.AdorableHamsterPets;
 
@@ -12,153 +12,154 @@ import net.dawson.adorablehamsterpets.AdorableHamsterPets;
 @Config(name = AdorableHamsterPets.MOD_ID, wrapperName = "ModConfig")
 public class ModConfigModel {
 
-    @SectionHeader("Spawning") // Config section for hamster spawning
+    // --- Top-Level Sections ---
+    @SectionHeader("Hamster Spawning")
     @Nest
-    public Spawning spawning = new Spawning();
+    public HamsterSpawningSettings hamsterSpawning = new HamsterSpawningSettings();
 
-    @SectionHeader("Behavior") // Config section for hamster behavior
+    @SectionHeader("Hamster Behavior & Care") // Broadened title slightly
     @Nest
-    public Behavior behavior = new Behavior();
+    public HamsterBehaviorSettings hamsterBehavior = new HamsterBehaviorSettings();
 
-    @SectionHeader("Cooldowns") // Config section for various cooldowns
+    @SectionHeader("Feature Toggles & Mechanics")
     @Nest
-    public Cooldowns cooldowns = new Cooldowns();
+    public FeatureToggleSettings featureToggles = new FeatureToggleSettings();
 
-    @SectionHeader("Features") // Config section for enabling/disabling features
+    @SectionHeader("World Generation Tweaks") // Renamed for clarity
     @Nest
-    public Features features = new Features();
-
-    @SectionHeader("World Generation") // Config section for world generation tweaks
-    @Nest
-    public WorldGen worldGen = new WorldGen();
+    public WorldGenAdjustmentSettings worldGenAdjustments = new WorldGenAdjustmentSettings();
 
     @SectionHeader("UI & Quality of Life")
     @Nest
-    public UiTweaks uiTweaks = new UiTweaks();
+    public UiPreferenceSettings uiPreferences = new UiPreferenceSettings();
 
-    // --- Spawning Settings ---
-    public static class Spawning {
-        @RangeConstraint(min = 0, max = 100)
+    // --- Nested Classes Defining the Options ---
+
+    public static class HamsterSpawningSettings {
         @Comment("Adjusts hamster spawn frequency. Higher = more chaos. 0 = blissful silence.")
-        public int hamsterSpawnWeight = 30;
+        @RangeConstraint(min = 0, max = 100)
+        public int spawnWeight = 30;
 
-        @RangeConstraint(min = 1, max = 10)
         @Comment("Maximum hamsters per spawn group. Because sometimes one just isn't cute enough.")
-        public int hamsterMaxGroupSize = 2;
+        @RangeConstraint(min = 1, max = 10)
+        public int maxGroupSize = 1;
     }
 
-    // --- Behavior Settings ---
-    public static class Behavior {
-        @RangeConstraint(min = 0.0, max = 40.0)
+    public static class HamsterBehaviorSettings {
+        @SectionHeader("Combat & Damage") // Sub-header
         @Comment("Tamed hamster melee damage. Mostly for show, let's be honest.")
-        public double hamsterMeleeDamage = 2.0;
+        @RangeConstraint(min = 0.0, max = 40.0)
+        public double meleeDamage = 2.0;
 
-        @RangeConstraint(min = 1, max = 20)
+        @Comment("Damage dealt by thrown hamster. Surprisingly, the default value is exactly enough to kill a creeper. What a coincidence.")
+        @RangeConstraint(min = 0.0f, max = 40.0f) // Changed from float to double for consistency with meleeDamage
+        public double hamsterThrowDamage = 20.0;
+
+        @SectionHeader("Interaction & General Care") // Sub-header
         @Comment("Taming difficulty (1 in X chance). Higher means more cucumbers sacrificed to the RNG gods.")
+        @RangeConstraint(min = 1, max = 20)
         public int tamingChanceDenominator = 3;
 
-        @RangeConstraint(min = 0.0f, max = 10.0f)
+        @Comment("Breeding cooldown (ticks) for hamsters. They need their space. (20 ticks = 1s)")
+        @RangeConstraint(min = 600, max = 24000) // 30s to 20m
+        public int breedingCooldownTicks = 6000;
+
+        @SectionHeader("Food Effects & Healing") // Sub-header
         @Comment("Healing amount from Hamster Food Mix. The good stuff.")
+        @RangeConstraint(min = 0.0f, max = 10.0f)
         public float hamsterFoodMixHealing = 4.0f;
 
-        @RangeConstraint(min = 0.0f, max = 5.0f)
         @Comment("Healing from basic seeds/crops. Better than nothing... probably.")
+        @RangeConstraint(min = 0.0f, max = 5.0f)
         public float standardFoodHealing = 2.0f;
-    }
 
-    // --- Cooldown Settings ---
-    public static class Cooldowns {
-        @RangeConstraint(min = 20, max = 20 * 60 * 10) // 1 sec to 10 mins
+        @Comment("Duration (ticks) of the Steamed Green Bean buff. Fleeting power. (20 ticks = 1s)")
+        @RangeConstraint(min = 20, max = 20 * 60 * 10) // 1s to 10m
+        public int greenBeanBuffDuration = 3600;
+
+        @Comment("Speed boost level (0=I, 1=II...) from beans. Gotta go fast?")
+        @RangeConstraint(min = 0, max = 4)
+        public int greenBeanBuffAmplifierSpeed = 1;
+
+        @Comment("Strength boost level (0=I, 1=II...) from beans. For slightly mightier nibbles.")
+        @RangeConstraint(min = 0, max = 4)
+        public int greenBeanBuffAmplifierStrength = 1;
+
+        @Comment("Absorption boost level (0=I, 1=II...) from beans. Extra fluff padding.")
+        @RangeConstraint(min = 0, max = 4)
+        public int greenBeanBuffAmplifierAbsorption = 1;
+
+        @Comment("Regeneration boost level (0=I, 1=II...) from beans. Heals minor paper-cuts.")
+        @RangeConstraint(min = 0, max = 4)
+        public int greenBeanBuffAmplifierRegen = 0;
+
+        @SectionHeader("Cooldowns & Timers") // Sub-header for remaining cooldowns and sleep timers
+        @Comment("Minimum time (seconds) a tamed, sitting hamster will wait before *considering* a nap. If you're impatient, crank it down.")
+        @RangeConstraint(min = 1, max = 300) // Min 1s, Max 5m
+        public int tamedQuiescentSitMinSeconds = 120;
+
+        @Comment("Maximum time (seconds) a tamed, sitting hamster will wait. Because even digital rodents need their beauty sleep, eventually.")
+        @RangeConstraint(min = 2, max = 600) // Min 2s (must be >= minQuiescentSitMinSeconds practical lower bound), Max 10m
+        public int tamedQuiescentSitMaxSeconds = 180;
+
         @Comment("Cooldown (ticks) after using a hamster as a projectile. Give it a moment. (20 ticks = 1s)")
-        public int hamsterThrowCooldown = 2400; // Default to 2 minutes (2 * 60 * 20)
+        @RangeConstraint(min = 20, max = 20 * 60 * 10) // 1s to 10m
+        public int hamsterThrowCooldown = 2400;
 
-        @RangeConstraint(min = 20, max = 20 * 60 * 10)
-        @Comment("Cooldown (ticks) before Steamed Green Bean buffs can be reapplied. Patience.")
+        @Comment("Cooldown (ticks) before Steamed Green Bean buffs can be reapplied. Patience. (20 ticks = 1s)")
+        @RangeConstraint(min = 20, max = 20 * 60 * 10) // 1s to 10m
         public int steamedGreenBeansBuffCooldown = 6000;
-
-        @RangeConstraint(min = 600, max = 24000) // 30 seconds to 20 minutes
-        @Comment("Breeding cooldown (ticks) for hamsters. They need their space.")
-        public int breedingCooldownTicks = 6000;
     }
 
-    // --- Feature Settings ---
-    public static class Features {
-        @Comment("Enable the 'Sweet Potato' name tag easter egg? Sure, why not.")
-        public boolean enableSweetPotatoEasterEgg = true;
-
-        @Comment("Allow shoulder hamsters to detect Creepers? Might save your inventory.")
-        public boolean enableShoulderCreeperDetection = true;
-
-        @Comment("Allow shoulder hamsters to detect Diamonds? Or do you enjoy the surprise?")
-        public boolean enableShoulderDiamondDetection = true;
-
-        @RangeConstraint(min = 1.0, max = 32.0)
-        @Comment("Shoulder Diamond detection radius (blocks). How close do you need to be?")
-        public double shoulderDiamondDetectionRadius = 10.0;
-
-        @RangeConstraint(min = 1.0, max = 64.0)
-        @Comment("Shoulder Creeper detection radius (blocks). Adjust paranoia levels.")
-        public double shoulderCreeperDetectionRadius = 16.0;
-
-        @RangeConstraint(min = 0.0, max = 40.0)
-        @Comment("Damage dealt by thrown hamster. Surprisingly, the default value is exactly enough to kill a creeper. What a coincidence.")
-        public float hamsterThrowDamage = 20.0f;
-
+    public static class FeatureToggleSettings { // Renamed from FeatureTogglesAndMechanics
+        @SectionHeader("Core Gameplay Features") // Sub-header
         @Comment("Enable hamster throwing? ('G' key default). Use responsibly. Or don't.")
         public boolean enableHamsterThrowing = true;
 
         @Comment("Unlock cheek pouches with 'Hamster Food Mix'? If false, pouches are always usable. Note: Toggling this ON after it was OFF will re-lock pouches for hamsters not yet fed Food Mix.")
         public boolean requireFoodMixToUnlockCheeks = true;
+
+        @SectionHeader("Shoulder Pet Alerts") // Sub-header
+        @Comment("Allow shoulder hamsters to detect Creepers? Might save your inventory.")
+        public boolean enableShoulderCreeperDetection = true;
+        @Comment("Shoulder Creeper detection radius (blocks). Adjust paranoia levels.")
+        @RangeConstraint(min = 1.0, max = 64.0)
+        public double shoulderCreeperDetectionRadius = 16.0;
+
+        @Comment("Allow shoulder hamsters to detect Diamonds? Or do you enjoy the surprise?")
+        public boolean enableShoulderDiamondDetection = true;
+        @Comment("Shoulder Diamond detection radius (blocks). How close do you need to be?")
+        @RangeConstraint(min = 1.0, max = 32.0)
+        public double shoulderDiamondDetectionRadius = 10.0;
+
+        @SectionHeader("Sleep Mechanics Details") // Sub-header for sleep toggles/details
+        @Comment("How close (blocks) a hostile mob can be before your napping hamster rudely awakens. Or decides napping wasn't a good idea.")
+        @RangeConstraint(min = 1, max = 32)
+        public int tamedSleepThreatDetectionRadiusBlocks = 8;
+
+        @Comment("Must it be daytime for your tamed, sitting hamster to drift off? If false, they'll happily snooze through the night. Lazy bums.")
+        public boolean requireDaytimeForTamedSleep = true;
     }
 
-    // --- World Generation Settings ---
-    public static class WorldGen {
-        @RangeConstraint(min = 0.1, max = 5.0)
+    public static class WorldGenAdjustmentSettings { // Renamed from WorldGenSettings
         @Comment("Sunflower seed regrowth speed. Higher values make it slower; lower values make it faster. Makes perfect sense.")
+        @RangeConstraint(min = 0.1, max = 5.0)
         public double sunflowerRegrowthModifier = 1.0;
 
-        @RangeConstraint(min = 0.1, max = 5.0)
         @Comment("Wild bush seed regrowth speed. Higher values make it slower; lower values make it faster. Makes perfect sense.")
+        @RangeConstraint(min = 0.1, max = 5.0)
         public double wildBushRegrowthModifier = 1.0;
 
-        @RangeConstraint(min = 1, max = 100)
         @Comment("Wild green bean bush rarity (1 in X chunks). WARNING: Low values (1-5) might cause... bush spam.")
+        @RangeConstraint(min = 1, max = 100)
         public int wildGreenBeanBushRarity = 24;
 
-        @RangeConstraint(min = 1, max = 100)
         @Comment("Wild cucumber bush rarity (1 in X chunks). WARNING: Ditto on the bush incidents.")
+        @RangeConstraint(min = 1, max = 100)
         public int wildCucumberBushRarity = 24;
     }
 
-    // --- Buff Settings ---
-    @SectionHeader("Buffs") // Config section for buff effects
-    @Nest
-    public Buffs buffs = new Buffs();
-
-    public static class Buffs {
-        @RangeConstraint(min = 20, max = 20 * 60 * 10)
-        @Comment("Duration (ticks) of the Steamed Green Bean buff. Fleeting power.")
-        public int greenBeanBuffDuration = 3600;
-
-        @RangeConstraint(min = 0, max = 4) // Level I to V
-        @Comment("Speed boost level (0=I, 1=II...) from beans. Gotta go fast?")
-        public int greenBeanBuffAmplifierSpeed = 1;
-
-        @RangeConstraint(min = 0, max = 4)
-        @Comment("Strength boost level (0=I, 1=II...) from beans. For slightly mightier nibbles.")
-        public int greenBeanBuffAmplifierStrength = 1;
-
-        @RangeConstraint(min = 0, max = 4)
-        @Comment("Absorption boost level (0=I, 1=II...) from beans. Extra fluff padding.")
-        public int greenBeanBuffAmplifierAbsorption = 1;
-
-        @RangeConstraint(min = 0, max = 4)
-        @Comment("Regeneration boost level (0=I, 1=II...) from beans. Heals minor paper-cuts.")
-        public int greenBeanBuffAmplifierRegen = 0;
-    }
-
-    // --- UI and Tips Settings ---
-    public static class UiTweaks {
+    public static class UiPreferenceSettings { // Renamed from UiSettings
         @Comment("Show helpful tooltips on hamster-related items and blocks? Your call. I'm not your conscience.")
         public boolean enableItemTooltips = true;
 
@@ -166,6 +167,6 @@ public class ModConfigModel {
         public boolean enableAutoGuidebookDelivery = true;
 
         @Comment("Show a message when your hamster dismounts from your shoulder? Some find it helpful, others... less so.")
-        public boolean enableShoulderDismountMessages = true; // Moved from Features
+        public boolean enableShoulderDismountMessages = true;
     }
 }

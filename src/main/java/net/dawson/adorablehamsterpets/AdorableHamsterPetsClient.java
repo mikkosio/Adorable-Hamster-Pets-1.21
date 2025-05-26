@@ -80,7 +80,7 @@ public class AdorableHamsterPetsClient implements ClientModInitializer {
 
             // --- Check Config Setting ---
             final ModConfig config = AdorableHamsterPets.CONFIG;
-            if (!config.features.enableHamsterThrowing()) {
+            if (!config.featureToggles.enableHamsterThrowing()) {
                 // Send a message to the player explaining why it's disabled
                 player.sendMessage(Text.literal("Hamster throwing is disabled in config."), true);
                 return; // Stop if throwing is disabled

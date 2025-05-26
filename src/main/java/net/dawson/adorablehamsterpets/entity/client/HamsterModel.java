@@ -51,24 +51,40 @@ public class HamsterModel extends GeoModel<HamsterEntity> {
 
         // --- Bone References ---
         GeoBone rootBone = this.getAnimationProcessor().getBone("root");
-        GeoBone bodyParentBone = this.getAnimationProcessor().getBone("body_parent");
         GeoBone headParentBone = this.getAnimationProcessor().getBone("head_parent");
         GeoBone closedEyesBone = this.getAnimationProcessor().getBone("closed_eyes");
         GeoBone leftCheekDefBone = this.getAnimationProcessor().getBone("left_cheek_deflated");
         GeoBone rightCheekDefBone = this.getAnimationProcessor().getBone("right_cheek_deflated");
         GeoBone leftCheekInfBone = this.getAnimationProcessor().getBone("left_cheek_inflated");
         GeoBone rightCheekInfBone = this.getAnimationProcessor().getBone("right_cheek_inflated");
-        // --- End Bone References ---
 
-        // --- Blinking Logic ---
-        if (closedEyesBone != null) {
-            int currentBlinkTimer = entity.getBlinkTimer();
-            boolean isBlinkingClosed = currentBlinkTimer > 0 &&
-                    (currentBlinkTimer <= 2 || currentBlinkTimer >= 5);
-            boolean showClosedEyes = entity.isSleeping() || isBlinkingClosed || entity.isKnockedOut();
-            closedEyesBone.setHidden(!showClosedEyes);
+        // --- State Determination for Eye Control ---
+        boolean isWakingUp = entity.wakingUpTicks > 0;
+        boolean isActuallySleepingOrDozing;
+
+        if (entity.isTamed()) {
+            HamsterEntity.DozingPhase phase = entity.getDozingPhase();
+            isActuallySleepingOrDozing = phase == HamsterEntity.DozingPhase.DRIFTING_OFF ||
+                    phase == HamsterEntity.DozingPhase.SETTLING_INTO_SLUMBER ||
+                    phase == HamsterEntity.DozingPhase.DEEP_SLEEP;
+        } else { // Wild hamster
+            isActuallySleepingOrDozing = entity.isSleeping();
         }
-        // --- End Blinking Logic ---
+
+        // --- Blinking and Eye Closure Logic ---
+        if (closedEyesBone != null) {
+            if (isActuallySleepingOrDozing || entity.isKnockedOut() || isWakingUp) {
+                // If sleeping, dozing, knocked out, OR WAKING UP, force closed_eyes bone to be VISIBLE.
+                // The animations (sleep, ko, wakeup) will then control the actual eye appearance.
+                closedEyesBone.setHidden(false);
+            } else {
+                // Not in a special eye-override state, apply procedural blinking.
+                int currentBlinkTimer = entity.getBlinkTimer();
+                boolean isBlinkingClosed = currentBlinkTimer > 0 &&
+                        (currentBlinkTimer <= 2 || currentBlinkTimer >= 5);
+                closedEyesBone.setHidden(!isBlinkingClosed);
+            }
+        }
 
         // --- Cheek Pouch Visibility Logic ---
         if (leftCheekDefBone != null && leftCheekInfBone != null) {
@@ -81,13 +97,12 @@ public class HamsterModel extends GeoModel<HamsterEntity> {
             rightCheekDefBone.setHidden(rightFull);
             rightCheekInfBone.setHidden(!rightFull);
         }
-        // --- End Cheek Pouch Logic ---
 
-        // --- 2. Baby/Adult Scaling Logic ---
-        if (rootBone != null && bodyParentBone != null && headParentBone != null) {
+        // --- Baby/Adult Scaling Logic ---
+        // bodyParentBone scale is intentionally not set here, allowing JSON breathing anims to work proportionally.
+        if (rootBone != null && headParentBone != null) {
             if (entity.isBaby()) {
-                // --- 2a. Baby Scaling ---
-                // Root bone remains at 1.0f scale for babies, acting as a neutral parent.
+                // Baby Scaling
                 rootBone.setScaleX(BABY_SCALE);
                 rootBone.setScaleY(BABY_SCALE);
                 rootBone.setScaleZ(BABY_SCALE);
@@ -96,9 +111,8 @@ public class HamsterModel extends GeoModel<HamsterEntity> {
                 headParentBone.setScaleX(BABY_HEAD_SCALE);
                 headParentBone.setScaleY(BABY_HEAD_SCALE);
                 headParentBone.setScaleZ(BABY_HEAD_SCALE);
-                // --- End 2a. Baby Scaling ---
             } else {
-                // --- 2b. Adult Scaling (Explicit Reset) ---
+                // Adult Scaling (Explicit Reset)
                 rootBone.setScaleX(ADULT_SCALE);
                 rootBone.setScaleY(ADULT_SCALE);
                 rootBone.setScaleZ(ADULT_SCALE);
@@ -106,10 +120,8 @@ public class HamsterModel extends GeoModel<HamsterEntity> {
                 headParentBone.setScaleX(ADULT_SCALE);
                 headParentBone.setScaleY(ADULT_SCALE);
                 headParentBone.setScaleZ(ADULT_SCALE);
-
-                // --- End 2b. Adult Scaling ---
             }
         }
-        // --- End 2. Baby/Adult Scaling Logic ---
+        // --- End Baby/Adult Scaling Logic ---
     }
 }

@@ -39,7 +39,7 @@ public class ModPlacedFeatures {
         register(context, WILD_GREEN_BEAN_BUSH_PLACED_KEY,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WILD_GREEN_BEAN_BUSH_KEY),
                 // Placement Modifiers:
-                RarityFilterPlacementModifier.of(config.worldGen.wildGreenBeanBushRarity()), // Use config value
+                RarityFilterPlacementModifier.of(config.worldGenAdjustments.wildGreenBeanBushRarity()), // Use config value
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()
@@ -50,7 +50,7 @@ public class ModPlacedFeatures {
         register(context, WILD_CUCUMBER_BUSH_PLACED_KEY,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WILD_CUCUMBER_BUSH_KEY),
                 // Placement Modifiers:
-                RarityFilterPlacementModifier.of(config.worldGen.wildCucumberBushRarity()), // Use config value
+                RarityFilterPlacementModifier.of(config.worldGenAdjustments.wildCucumberBushRarity()), // Use config value
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()
