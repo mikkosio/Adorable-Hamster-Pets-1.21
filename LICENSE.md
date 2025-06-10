@@ -2,7 +2,7 @@
 
 `/src/main/resources/`
 
-(This includes, but is not limited to, all textures, models, animations, sound files, and language files.)
+(This includes, but is not limited to: all textures, models, animations, sound files, and language files.)
 
 # All Rights Reserved
 Copyright (c) 2025 Dawson Bodenhamer ([**www.ForTheKing.Design**](https://www.fortheking.design/))
