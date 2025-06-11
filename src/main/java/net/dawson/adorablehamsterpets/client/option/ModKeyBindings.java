@@ -12,11 +12,14 @@ public class ModKeyBindings {
 
     public static KeyBinding THROW_HAMSTER_KEY;
 
+    public static final String KEY_TOGGLE_HAMSTER_DEBUG_TRANSLATION_KEY = "key.adorablehamsterpets.toggle_hamster_debug";
+    public static KeyBinding TOGGLE_HAMSTER_DEBUG_KEYBIND;
+
     public static void registerKeyInputs() {
         THROW_HAMSTER_KEY = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 KEY_THROW_HAMSTER,
-                InputUtil.Type.KEYSYM, // <-- Correct type for keyboard keys like 'G'
-                GLFW.GLFW_KEY_G,       // <-- Correct key code for 'G'
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_G,
                 KEY_CATEGORY_HAMSTERPETS
         ));
     }

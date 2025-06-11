@@ -17,6 +17,7 @@ public class ModCriteria {
     public static final HamsterDiamondAlertCriterion HAMSTER_DIAMOND_ALERT_TRIGGERED = register("hamster_diamond_alert_triggered", new HamsterDiamondAlertCriterion());
     public static final HamsterCreeperAlertCriterion HAMSTER_CREEPER_ALERT_TRIGGERED = register("hamster_creeper_alert_triggered", new HamsterCreeperAlertCriterion());
     public static final HamsterPouchFilledCriterion HAMSTER_POUCH_FILLED = register("hamster_pouch_filled", new HamsterPouchFilledCriterion());
+    public static final HamsterLedToDiamondCriterion HAMSTER_LED_TO_DIAMOND = register("hamster_led_to_diamond", new HamsterLedToDiamondCriterion());
 
 
     private static <T extends Criterion<?>> T register(String name, T criterion) {

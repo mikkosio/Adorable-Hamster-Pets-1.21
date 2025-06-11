@@ -17,17 +17,13 @@ public class AdorableHamsterPetsDataGenerator implements DataGeneratorEntrypoint
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
-
-		// Keep existing providers
+		pack.addProvider(EnUsGenerator::new);
 		pack.addProvider(ModLootTableProvider::new);
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
-
-		// [ADDED] Add provider for dynamic registries (features)
 		pack.addProvider(ModWorldGenerator::new);
 	}
 
-	// [ADDED] Inner class for dynamic registry provider
 	private static class ModWorldGenerator extends FabricDynamicRegistryProvider {
 		public ModWorldGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
 			super(output, registriesFuture);
@@ -35,7 +31,6 @@ public class AdorableHamsterPetsDataGenerator implements DataGeneratorEntrypoint
 
 		@Override
 		protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
-			// Add entries for configured and placed features using their bootstrap methods
 			entries.addAll(registries.getWrapperOrThrow(RegistryKeys.CONFIGURED_FEATURE));
 			entries.addAll(registries.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE));
 		}
@@ -46,7 +41,6 @@ public class AdorableHamsterPetsDataGenerator implements DataGeneratorEntrypoint
 		}
 	}
 
-	// [ADDED] Override buildRegistry to register our bootstrap methods
 	@Override
 	public void buildRegistry(RegistryBuilder registryBuilder) {
 		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);

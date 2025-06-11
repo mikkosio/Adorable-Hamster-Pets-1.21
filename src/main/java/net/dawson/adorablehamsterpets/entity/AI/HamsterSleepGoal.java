@@ -94,6 +94,7 @@ public class HamsterSleepGoal extends Goal {
                 );
             }
         }
+        this.hamster.setActiveCustomGoalDebugName(this.getClass().getSimpleName());
     }
 
     @Override
@@ -120,6 +121,10 @@ public class HamsterSleepGoal extends Goal {
         this.hamster.setSleeping(false);
         this.hamster.setInSittingPose(false);
         this.checkTimer = 0;
+
+        if (this.hamster.getActiveCustomGoalDebugName().equals(this.getClass().getSimpleName())) {
+            this.hamster.setActiveCustomGoalDebugName("None");
+        }
     }
 
     // --- 5. Private Helper Methods ---

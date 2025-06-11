@@ -63,12 +63,16 @@ public class HamsterMeleeAttackGoal extends MeleeAttackGoal {
         super.start();
         AdorableHamsterPets.LOGGER.debug("[AttackGoal {} Tick {}] Goal started.", this.hamster.getId(), this.hamster.getWorld().getTime());
         this.cooldown = 0;
+        this.hamster.setActiveCustomGoalDebugName(this.getClass().getSimpleName());
     }
 
     @Override
     public void stop() {
         super.stop();
         AdorableHamsterPets.LOGGER.debug("[AttackGoal {} Tick {}] Goal stopped.", this.hamster.getId(), this.hamster.getWorld().getTime());
+        if (this.hamster.getActiveCustomGoalDebugName().equals(this.getClass().getSimpleName())) {
+            this.hamster.setActiveCustomGoalDebugName("None");
+        }
     }
 
     @Override

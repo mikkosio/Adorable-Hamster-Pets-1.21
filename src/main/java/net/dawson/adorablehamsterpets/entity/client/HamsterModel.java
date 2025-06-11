@@ -52,7 +52,6 @@ public class HamsterModel extends GeoModel<HamsterEntity> {
         // --- Bone References ---
         GeoBone rootBone = this.getAnimationProcessor().getBone("root");
         GeoBone headParentBone = this.getAnimationProcessor().getBone("head_parent");
-        GeoBone closedEyesBone = this.getAnimationProcessor().getBone("closed_eyes");
         GeoBone leftCheekDefBone = this.getAnimationProcessor().getBone("left_cheek_deflated");
         GeoBone rightCheekDefBone = this.getAnimationProcessor().getBone("right_cheek_deflated");
         GeoBone leftCheekInfBone = this.getAnimationProcessor().getBone("left_cheek_inflated");
@@ -69,21 +68,6 @@ public class HamsterModel extends GeoModel<HamsterEntity> {
                     phase == HamsterEntity.DozingPhase.DEEP_SLEEP;
         } else { // Wild hamster
             isActuallySleepingOrDozing = entity.isSleeping();
-        }
-
-        // --- Blinking and Eye Closure Logic ---
-        if (closedEyesBone != null) {
-            if (isActuallySleepingOrDozing || entity.isKnockedOut() || isWakingUp) {
-                // If sleeping, dozing, knocked out, OR WAKING UP, force closed_eyes bone to be VISIBLE.
-                // The animations (sleep, ko, wakeup) will then control the actual eye appearance.
-                closedEyesBone.setHidden(false);
-            } else {
-                // Not in a special eye-override state, apply procedural blinking.
-                int currentBlinkTimer = entity.getBlinkTimer();
-                boolean isBlinkingClosed = currentBlinkTimer > 0 &&
-                        (currentBlinkTimer <= 2 || currentBlinkTimer >= 5);
-                closedEyesBone.setHidden(!isBlinkingClosed);
-            }
         }
 
         // --- Cheek Pouch Visibility Logic ---

@@ -1,10 +1,21 @@
-<p> <img src="https://i.imgur.com/BC9TR5G.png" alt="Adorable Hamster Pets Banner Image" width="2000" style="border-radius:17px;" /> </p>
+<p> <img src="https://i.imgur.com/UtXZsN7.png" alt="Adorable Hamster Pets Banner Image" width="2000" /> </p>
 
-# <font color="orange">Every great realm needs a tiny, squeaky snack-bandit.</font>
+# <font color="orange">Because every great realm needs a tiny, squeaky snack-bandit.</font>
 
 Let's go back to the beginning. You looked upon your blocky domain, surveyed your automated farms spewing resources you probably don't need, your enchanted gear shimmering with overkill, your… unique architectural choices, and declared, "Needs more rodents."
 
 Or maybe you didn't. Doesn't matter. You're here now, considering adding hamsters to a world already teeming with exploding plants and questionable physics. A truly inspired decision.
+
+<a href="https://discord.gg/w54mk5bqdf">
+<div align="right" style="margin-left:30px;">
+  <img
+    src="https://discord.com/api/guilds/1382334723333820568/widget.png?style=banner3"
+    align="right"
+    hspace="30"
+    width="350"
+    alt="Join the Adorable Hamster Pets Discord!" />
+</div>
+</a>
 
 **Adorable Hamster Pets** introduces, against potentially better judgment, hamsters to Minecraft. Tiny, fuzzy, occasionally helpful, frequently underfoot creatures destined to become your new favorite source of minor inventory clutter. They squeak, bounce, fly... if you throw them... and silently judge your life choices from the questionable safety of your shoulder. You can tame them (if you're patient), feed them various vegetable concoctions (results may vary), and even launch them in an attack. (Consult your local ethics committee. Or don't. I'm not your conscience).
 
@@ -53,6 +64,16 @@ Bribe them with enough Sliced Cucumber, and they'll follow you like a furry, ank
 Tamed hamsters, when left sitting, might just decide it's naptime. Watch as they gradually drift off through an elaborate "Path to Slumber" sequence, complete with unique animations for dozing, settling, and several adorable deep sleep poses. Their dedication to slumber is even configurable!
 
 Wild hamsters also have a rather bouncy transition into their naps.
+
+..........................
+</details>
+
+<details>
+<summary>Unique Animation Personalities</summary>
+
+..........................
+
+Not all hamsters are created equal. Upon birth, each hamster is assigned one of three "personalities," which determines the specific sitting and dozing off animations it will use for its entire life. One might be a prim and proper sitter, while another is a bit more of a sloucher. It's a small touch to make your specific furry companion feel even more unique.
 
 ..........................
 </details>
@@ -179,8 +200,9 @@ Alright, let's be real. Sometimes things break. Sometimes hamsters exhibit behav
 
 Here's how to get in touch. And yes, I'm probably going to regret at least one of these options.
 
-*   **The Official, Sensible Route (Preferred for Bugs & Features):**
+*   **The Official, Sensible Routes (Preferred for Bugs & Features):**
     *   **[GitHub Issues Page](https://github.com/DawsonBodenhamer/Adorable-Hamster-Pets-1.21/issues):** This is the best place for bug reports and feature suggestions. I actually check it. Frequently. It helps keep things organized, and other people can see if their issue is already known.
+    *   **[Official Discord Server](https://discord.gg/w54mk5bqdf):** Come hang out, share pictures of your hamsters, or get help in real-time. It's organized chaos, and you're invited. 
 
 *   **The "I Need to Talk to a Human" Options:**
     *   [**Email:**](mailto:dawson@fortheking.design) - For when GitHub feels too impersonal, or you want to send me digital fan mail (or virtual rotten tomatoes).
@@ -197,14 +219,15 @@ If you're reporting a bug, to save both our sanities, try to include:
 3.  **What Actually Happened:** (e.g., "...but instead, it turned into a turnip and started quoting Shakespeare. Also, my game crashed.")
 4.  **Minecraft Version, Mod Version, Fabric Loader/API Versions:** Usually found in the top of your crash report or your mod list.
 5.  **Crash Report (If Applicable):** Use a site like [Pastebin](https://pastebin.com/), [Gist](https://gist.github.com/), or [Mclo.gs](https://mclo.gs/) and give me the link. **Do NOT paste the whole thing into a GitHub comment or email.** My scroll wheel will thank you.
-6.  **Screenshots/Videos (If Helpful):** A picture (or better yet, a screen recording) is worth a thousand lines of confused log reading.
-7.  ### **👉🏼👉🏼👉🏼 Hamster Debug Info (Jade Mod):**
+6.  **Pro Tip (For Crash Reports):** To make your life (and mine) infinitely easier, consider installing the [**Crash Assistant**](https://modrinth.com/mod/crash-assistant) mod. It's a client-side utility that pops up after a crash and gives you a one-click button to upload all relevant logs. It's not required, but it's *highly* recommended.
+7.  **Screenshots/Videos (If Helpful):** A picture (or better yet, a screen recording) is worth a thousand lines of confused log reading.
+8.  ### **👉🏼👉🏼👉🏼 Hamster Debug Info (Jade Mod):**
     *   If you have the [**Jade mod**](https://modrinth.com/mod/jade) installed, my mod includes a special debug overlay for hamsters.
     *   **To toggle this overlay:** Sneak and Right-Click a **tamed** hamster while holding the **Hamster Guide Book**. *(You can craft the guidebook with a Book + Sliced Cucumber).* An action bar message will confirm if it's enabled or disabled.
     *   Alternatively, you can enable/disable it in the "Adorable Hamster Pets" config screen (Mod Menu -> Adorable Hamster Pets -> UI & Quality of Life -> "Enable Jade Hamster Debug Info").
     *   If your bug involves hamster behavior or animations, please try to capture a screenshot or video with this debug overlay visible while looking at the affected hamster. Knowing the states shown in this overlay (e.g., "Current Custom Goal," "Sitting," "Dozing Phase") is extremely helpful for diagnosing issues!
 
-The more info you give, the less I have to guess, and the faster things might get fixed. 
+The more info you give, the less I have to guess, and the faster things might get fixed.
 
 Fun fact: I've already implemented new features like the custom advancement tree and config toggles for the hamster guidebook based on suggestions from my Github! We move quick around here.
 

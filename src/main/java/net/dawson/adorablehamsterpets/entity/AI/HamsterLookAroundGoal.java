@@ -23,7 +23,7 @@ public class HamsterLookAroundGoal extends LookAroundGoal {
         // --- 1. Check Hamster State ---
         // Use our stored 'hamsterMob' reference
         if (this.hamsterMob instanceof HamsterEntity hamster) {
-            if (hamster.isSitting() || hamster.isSleeping() || hamster.isKnockedOut()) {
+            if (hamster.isSitting() || hamster.isSleeping() || hamster.isKnockedOut() || hamster.isSulking()) {
                 return false;
             }
         }
@@ -32,16 +32,34 @@ public class HamsterLookAroundGoal extends LookAroundGoal {
     }
 
     @Override
+    public void start() {
+        super.start();
+        if (this.hamsterMob instanceof HamsterEntity he) {
+            he.setActiveCustomGoalDebugName(this.getClass().getSimpleName());
+        }
+    }
+
+    @Override
     public boolean shouldContinue() {
         // --- 1. Check Hamster State ---
         // Use our stored 'hamsterMob' reference
         if (this.hamsterMob instanceof HamsterEntity hamster) {
-            if (hamster.isSitting() || hamster.isSleeping() || hamster.isKnockedOut()) {
+            if (hamster.isSitting() || hamster.isSleeping() || hamster.isKnockedOut() || hamster.isSulking()) {
                 return false;
             }
         }
         // --- End 1. Check Hamster State ---
         return super.shouldContinue();
+    }
+
+    @Override
+    public void stop() {
+        super.stop();
+        if (this.hamsterMob instanceof HamsterEntity he) {
+            if (he.getActiveCustomGoalDebugName().equals(this.getClass().getSimpleName())) {
+                he.setActiveCustomGoalDebugName("None");
+            }
+        }
     }
     // --- End 3. Overridden Methods ---
 }

@@ -1,7 +1,8 @@
 package net.dawson.adorablehamsterpets.entity.AI;
 
 import net.dawson.adorablehamsterpets.AdorableHamsterPets;
-import net.dawson.adorablehamsterpets.config.ModConfig;
+import net.dawson.adorablehamsterpets.config.AhpConfig;
+import net.dawson.adorablehamsterpets.config.Configs;
 import net.dawson.adorablehamsterpets.entity.custom.HamsterEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.server.world.ServerWorld;
@@ -25,7 +26,7 @@ public class HamsterMateGoal extends Goal {
     public boolean canStart() {
         // --- Add Logging ---
         boolean inLove = this.hamster.isInCustomLove();
-        AdorableHamsterPets.LOGGER.trace("[MateGoal {} Tick {}] canStart() check. isInCustomLove() = {}", this.hamster.getId(), this.hamster.getWorld().getTime(), inLove);
+        AdorableHamsterPets.LOGGER.debug("[MateGoal {} Tick {}] canStart() check. isInCustomLove() = {}", this.hamster.getId(), this.hamster.getWorld().getTime(), inLove);
         // --- End Logging ---
 
         if (inLove) {
@@ -50,10 +51,14 @@ public class HamsterMateGoal extends Goal {
     @Override
     public void start() {
         this.timer = 0;
+        this.hamster.setActiveCustomGoalDebugName(this.getClass().getSimpleName());
     }
 
     @Override
     public void stop() {
+        if (this.hamster.getActiveCustomGoalDebugName().equals(this.getClass().getSimpleName())) {
+            this.hamster.setActiveCustomGoalDebugName("None");
+        }
         this.targetMate = null;
     }
 
@@ -94,8 +99,8 @@ public class HamsterMateGoal extends Goal {
     private void breed() {
 
         // --- Use Config Value for Breeding Cooldown ---
-        final ModConfig config = AdorableHamsterPets.CONFIG;
-        int cooldown = config.hamsterBehavior.breedingCooldownTicks();
+        final AhpConfig config = AdorableHamsterPets.CONFIG;
+        int cooldown = config.breedingCooldownTicks.get();
         this.hamster.setBreedingAge(cooldown);
         this.targetMate.setBreedingAge(cooldown);
         // --- End Use Config Value ---

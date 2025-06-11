@@ -111,6 +111,26 @@ public class ModSounds {
     public static final SoundEvent HAMSTER_MOUNT2 = registerSoundEvent("hamster_mount2");
     public static final SoundEvent HAMSTER_MOUNT3 = registerSoundEvent("hamster_mount3");
     public static final SoundEvent HAMSTER_DISMOUNT = registerSoundEvent("hamster_dismount");
+
+    // --- Cleaning Sound ---
+    public static final SoundEvent HAMSTER_SCRATCH = registerSoundEvent("hamster_scratch");
+
+    // --- Bounce Sound ---
+    public static final SoundEvent HAMSTER_BOUNCE = registerSoundEvent("hamster_bounce");
+
+    // --- Shocked Sounds (for when the hamster accidentally finds gold ore instead of diamond) ---
+    public static final SoundEvent ALARM_ORCHESTRA_HIT = registerSoundEvent("alarm_orchestra_hit");
+    public static final SoundEvent HAMSTER_SHOCKED = registerSoundEvent("hamster_shocked");
+
+    // --- Affection Sounds (1-3) ---
+    public static final SoundEvent HAMSTER_AFFECTION1 = registerSoundEvent("hamster_affection1");
+    public static final SoundEvent HAMSTER_AFFECTION2 = registerSoundEvent("hamster_affection2");
+    public static final SoundEvent HAMSTER_AFFECTION3 = registerSoundEvent("hamster_affection3");
+
+    // --- Diamond Sparkle Sounds (1-3) ---
+    public static final SoundEvent DIAMOND_SPARKLE1 = registerSoundEvent("diamond_sparkle1");
+    public static final SoundEvent DIAMOND_SPARKLE2 = registerSoundEvent("diamond_sparkle2");
+    public static final SoundEvent DIAMOND_SPARKLE3 = registerSoundEvent("diamond_sparkle3");
     // --- End 1. SoundEvent Registrations ---
 
 
@@ -166,6 +186,18 @@ public class ModSounds {
 
     public static final SoundEvent[] HAMSTER_SHOULDER_MOUNT_SOUNDS = {
             HAMSTER_MOUNT1, HAMSTER_MOUNT2, HAMSTER_MOUNT3
+    };
+
+    public static final SoundEvent[] HAMSTER_BOUNCE_SOUNDS = {
+            HAMSTER_BOUNCE
+    };
+
+    public static final SoundEvent[] HAMSTER_AFFECTION_SOUNDS = {
+            HAMSTER_AFFECTION1, HAMSTER_AFFECTION2, HAMSTER_AFFECTION3
+    };
+
+    public static final SoundEvent[] DIAMOND_SPARKLE_SOUNDS = {
+            DIAMOND_SPARKLE1, DIAMOND_SPARKLE2, DIAMOND_SPARKLE3
     };
     // --- End 2. Public Sound Arrays ---
 

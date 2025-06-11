@@ -23,6 +23,12 @@ public class HamsterTemptGoal extends TemptGoal {
         // setControls(EnumSet.of(Control.MOVE, Control.LOOK)) is handled by superclass.
     }
 
+    @Override
+    public void start() {
+        super.start();
+        this.hamster.setActiveCustomGoalDebugName(this.getClass().getSimpleName());
+    }
+
     // --- 3. Public Methods (Overrides from TemptGoal/Goal) ---
     @Override
     public boolean canStart() {
@@ -86,7 +92,9 @@ public class HamsterTemptGoal extends TemptGoal {
     @Override
     public void stop() {
         super.stop(); // Calls vanilla TemptGoal's stop logic (clears navigation, sets cooldown).
-        // Explicitly ensure begging state is false when the goal stops for any reason.
+        if (this.hamster.getActiveCustomGoalDebugName().equals(this.getClass().getSimpleName())) {
+            this.hamster.setActiveCustomGoalDebugName("None");
+        }
         this.hamster.setBegging(false);
         this.recheckTimer = 0;
     }

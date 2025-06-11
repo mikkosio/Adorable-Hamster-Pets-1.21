@@ -11,7 +11,7 @@
 		"homepage": "https://www.fortheking.design/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "MIT",
+	"license": "Custom - See LICENSE.md",
 	"icon": "assets/adorablehamsterpets/icon.png",
 	"environment": "*",
 	"entrypoints": {
@@ -23,6 +23,9 @@
 		],
 		"fabric-datagen": [
 			"net.dawson.adorablehamsterpets.AdorableHamsterPetsDataGenerator"
+		],
+		"jade": [
+			"net.dawson.adorablehamsterpets.integration.jade.AHPJadePlugin"
 		]
 	},
 	"mixins": [
@@ -30,13 +33,22 @@
 	],
 	"accessWidener": "adorablehamsterpets.accesswidener",
 	"depends": {
-		"fabric-api": "*",
 		"fabricloader": ">=0.16.10",
-		"java": ">=21",
 		"minecraft": "~1.21.1",
-		"modmenu": "*"
+		"java": ">=21",
+
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*",
+		"geckolib": "*",
+		"fzzy_config": "*"
 	},
 	"suggests": {
-		"another-mod": "*"
+		"modmenu": "*",
+		"jade": "*"
+	},
+	"custom": {
+		"fzzy_config": [
+			"adorablehamsterpets:main"
+		]
 	}
 }

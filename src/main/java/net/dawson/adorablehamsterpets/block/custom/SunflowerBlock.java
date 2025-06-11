@@ -2,7 +2,8 @@ package net.dawson.adorablehamsterpets.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.dawson.adorablehamsterpets.AdorableHamsterPets;
-import net.dawson.adorablehamsterpets.config.ModConfig; // Import ModConfig
+import net.dawson.adorablehamsterpets.config.AhpConfig;
+import net.dawson.adorablehamsterpets.config.Configs; // Import AhpConfig
 import net.dawson.adorablehamsterpets.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
@@ -59,9 +60,9 @@ public class SunflowerBlock extends TallFlowerBlock implements Fertilizable {
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (state.get(HALF) == DoubleBlockHalf.UPPER && !state.get(HAS_SEEDS)) {
             // Access the stored config instance from the main mod class
-            final ModConfig config = AdorableHamsterPets.CONFIG;
+            final AhpConfig config = AdorableHamsterPets.CONFIG;
 
-            double modifier = config.worldGenAdjustments.sunflowerRegrowthModifier();
+            double modifier = config.sunflowerRegrowthModifier.get();
             modifier = Math.max(0.1, modifier);
 
             int baseRegrowthChanceDenominator = 150;

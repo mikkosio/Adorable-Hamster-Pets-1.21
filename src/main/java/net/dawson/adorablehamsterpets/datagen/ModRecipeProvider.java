@@ -4,15 +4,20 @@ import net.dawson.adorablehamsterpets.AdorableHamsterPets;
 import net.dawson.adorablehamsterpets.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.advancement.criterion.InventoryChangedCriterion;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.WrittenBookContentComponent;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -60,6 +65,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input(Items.MILK_BUCKET)
                 .criterion("has_milk_bucket", conditionsFromItem(Items.MILK_BUCKET))
                 .offerTo(recipeExporter); // Will use default ID: adorablehamsterpets:cheese
+
+        // Hamster Guide Book Recipe (NO NBT in result here)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.HAMSTER_GUIDE_BOOK, 1)
+                .input(Items.BOOK)
+                .input(ModItems.SLICED_CUCUMBER)
+                .criterion("has_sliced_cucumber", conditionsFromItem(ModItems.SLICED_CUCUMBER))
+                .offerTo(recipeExporter, Identifier.of(AdorableHamsterPets.MOD_ID, "hamster_guide_book_from_crafting"));
     }
-    // --- End 3. Public Methods ---
 }

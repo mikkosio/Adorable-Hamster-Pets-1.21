@@ -14,7 +14,78 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 
 
 ### Fixed
-- 
+-
+
+---
+
+## [1.2.0] - 2025-06-11
+
+### Added
+- **Jade Integration for Wild Bush Tooltips:** Custom tooltips for Wild Green Bean Bushes and Wild Cucumber Bushes now appear in Jade's overlay if Jade is installed, mirroring their item tooltips.
+- **Jade Integration for Hamster Debug Info (Configurable):**
+  - Added an advanced debug information overlay for Hamsters when viewed with Jade.
+  - Displays detailed AI states (current custom goal, sitting status, navigation, target), sleep sequence phases, love/interaction states, and general info like variant and age.
+  - This feature is primarily for debugging and is **disabled by default**.
+  - Can be toggled via a new option in the mod's config screen (Mod Menu -> Adorable Hamster Pets -> UI & Quality of Life -> "Enable Jade Hamster Debug Info").
+  - Can also be toggled in-game by sneak-right-clicking a tamed hamster while holding the Hamster Guide Book. An action bar message confirms the toggle.
+  - This Hamster Debug Info Jade integration is **AWESOME** for myself when bug fixing, but also for anyone reporting bugs (see `README`, "Bug Reporting Etiquette" section).
+- **Independent Ore Seeking Feature:**
+  - Tamed hamsters, after being on a player's shoulder while a diamond alert was active, can now independently seek out *that* diamond ore upon dismount.
+  - Features new AI goal (`HamsterSeekDiamondGoal`) with distinct states: scanning, moving to ore, and waiting if path is blocked.
+  - **Whoops! Who Put That There?** (There's a 33% chance a primed hamster targeting diamond might "mistakenly" pathfind to nearby gold ore instead. If this happens the hamster will be shocked and start sulking.)
+  - **New Animations:**
+    - `anim_hamster_seeking_diamond`: Looping animation for when the hamster is actively moving towards an ore.
+    - `anim_hamster_wants_to_seek_diamond`: Looping animation for when the hamster has targeted an ore but its path is blocked.
+    - `anim_hamster_sulk` (3s, non-looping) & `anim_hamster_sulking` (looping): Played if the hamster "mistakenly" finds gold.
+  - **New Sounds & Effects:**
+    - Dust particles (colored like the block the hamster is on) emit from the hamster's nose via animation keyframes while seeking.
+    - Upon finding diamond: "Diamond sparkle" sounds play at the ore, special particles (`TRIAL_SPAWNER_DETECTION_OMINOUS` on hamster, `FIREWORKS` above ore) appear, and the hamster plays the begging animation with new "bounce" sound effects triggered by animation keyframes. Aggressive begging sounds also play periodically.
+    - Upon "mistakenly" finding gold: A delayed orchestral hit (`alarm_orchestra_hit.ogg`) plays, followed by a delayed "hamster shocked" sound. Smoke particles appear above the gold ore, and black entity effect particles appear on the sulking hamster.
+  - **Interaction:** Player right-click clears diamond celebration or sulking states, with new "affection" sounds.
+  - **Configuration:** New options in Mod Menu to toggle the feature, its cooldown, and ore scan radius.
+  - **Advancement:** New "Canine Aspirations?" advancement for when a hamster first successfully leads to diamond.
+- **Jade Debug Overlay Enhancements:** The Jade debug overlay for hamsters now displays new states related to ore seeking (primed status, target ore, cooldown) and the sulking/celebrating diamond states.
+- **New Sound Events:** Added `hamster_bounce`, `alarm_orchestra_hit`, `hamster_shocked`, `diamond_sparkle1-3`, and `hamster_affection1-3` sound events and their definitions.
+- **Animation Personalities:** Tamed hamsters are now assigned one of three persistent "personalities" at birth, which determines the specific sitting animations they will use for their entire life, making each hamster feel more unique.
+- **Configurable Cleaning Frequency:** Added a new option in the config ("Cleaning Frequency") to control how often a sitting hamster will start its cleaning animation.
+
+### Changed
+- **Hamster Blinking is Cuter:** Removed the code-based procedural blinking logic for `HamsterEntity`. Eye blinking and closure are now entirely controlled by keyframes within the GeckoLib animations (`anim_hamster.json`), allowing for cuter and more context-aware blinking (e.g., slower blinks when sleepy).
+- Updated `README.md` to include instructions for players on how to use and provide the new Jade Hamster Debug Info when reporting bugs.
+- **Hamster AI for Following Owner:** Implemented `HamsterFollowOwnerGoal` in order to prevent hamsters from trying to follow their owner while they are celebrating a diamond find or sulking at gold (in addition to existing interruptions like sitting, sleeping, KO).
+- **Hamster AI for Looking Around:** `HamsterLookAtEntityGoal` and `HamsterLookAroundGoal` are now disabled when a hamster is knocked out, sitting, or sulking, preventing rotation during this state.
+- **Diamond Celebration Behavior:** Hamsters now also use the begging animation when celebrating a diamond find.
+- **Begging Animation:** The begging animation has been updated to include keyframe-driven bounce sounds.
+- **Dependency Declarations:** Updated `fabric.mod.json` to correctly declare hard dependencies on GeckoLib and owo-lib (now in `depends` section) and list ModMenu and Jade as optional (now in `suggests` section). This improves server compatibility and clarifies requirements for users and modpack creators.
+- **Guidebook Update:** Added a new page to the "Hamster Tips" guidebook detailing the "Independent Ore Seeking" feature, including how to prime a hamster for it.
+- ### Switched from owo-lib to Fzzy Config, which means lots of awsesome new config features, including change history and the ability to search for specific settings!
+- **Footstep Sound System Overhaul:** Hamster footstep sounds now use a hybrid system to improve immersion.
+  - When a hamster is on-screen, it uses precise, animation-keyframed sounds that are perfectly synchronized with its footfalls.
+  - When a hamster is off-screen (and thus not animating for the client), it uses the traditional vanilla (server-side) movement-based sounds as a fallback. This ensures you can always hear your companions following you.
+- **Sound Volume Balancing:**
+  - Footstep sounds on gravel are now 40% quieter to better match the volume of sounds on other surfaces like grass and stone.
+  - The volume of begging sounds has been reduced.
+- **Cleaning Animation Sound:** The cleaning animation now features a continuous, looping scratch sound. Fun fact— it's actually the sound of me scratching my beard 🤭
+
+### Legal
+- **License Update & Clarification:** Updated the project license to a split model (see `LICENSE.md`).
+  - Creative assets (models, textures, sounds, animations found in `/src/main/resources/`) are now **All Rights Reserved** to better protect the significant artistic effort invested. When "Adorable Hamster Pets" started nearly six months ago as what I thought would be a small weekend project, an MIT license seemed fine. I was so young and innocent of Javascript then. Lol.
+  - The Java source code and other non-asset files remain under the **MIT License**, allowing for community learning and code-level contributions.
+  - `fabric.mod.json` now points to `LICENSE.md` and specifies "Custom" license type.
+  - The `README.md` has been updated with a detailed, user-friendly explanation of these permissions.
+  - The `LICENSE` file was renamed to `LICENSE.md` so I could make it more readable.
+
+### Fixed
+- **Hamster Guide Book Crafting and NBT Application:**
+  - Fixed an issue where the crafting recipe for the Hamster Guide Book (1 Book + 1 Sliced Cucumber) would not appear or unlock correctly.
+  - The recipe is now generated via datagen and produces a plain, NBT-less book.
+  - A technical advancement now triggers upon crafting this plain book. The function rewarded by this advancement robustly clears any existing guidebooks from the player's inventory and then gives a single, new guidebook pre-filled with all NBT content (pages, title, author), ensuring the player always receives the complete, functional version.
+- **Wild Hamster State & Animation Bug on World Load:**
+  - Corrected an issue where wild hamsters would incorrectly load with their "Sitting" NBT tag as true, causing them to be stuck in a sitting animation while attempting to wander, and preventing them from sleeping or being tempted correctly.
+  - `HamsterEntity` NBT save/load logic now ensures the "Sitting" tag is only saved for tamed, player-commanded sitting, and wild hamsters correctly initialize without a sitting state on load.
+- **Hamster Spawning `maxGroupSize` Config Access:** Corrected the code in `ModEntitySpawns.java` to use the proper accessor path for `maxGroupSize` and `spawnWeight` from the owo-lib generated configuration, ensuring these settings are correctly applied during world generation. Due to a confirmed bug with owo-lib, the `maxGroupSize` slider mistakenly displays `0` instead of the default `1`, but this is only visual. Since the mod now uses Fzzy Config, this issue is no longer present.
+- **Biome Variant Spawning:** Hamsters now spawn with the correct color variants in all intended biomes. This fixes an issue where hamsters in Stony Shores, Windswept biomes, Jungles, and other previously uncovered areas would incorrectly default to the Orange variant. Black hamsters can now also correctly spawn in the Deep Dark biome.
+
 ---
 
 ## [1.1.1] - 2025-05-26

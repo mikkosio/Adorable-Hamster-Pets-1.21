@@ -42,15 +42,21 @@ repositories {
 		url  = 'https://maven.terraformersmc.com/'
 	}
 
-    // owo-lib
+	// Fzzy Config
 	maven {
-		name = 'Wisp Forest'
-		url  = 'https://maven.wispforest.io/releases/'
+		name = 'FzzyMaven'
+		url = 'https://maven.fzzyhmstrs.me/'
 	}
+
 	// Nucleoid
 	maven {
 		name = 'Nucleoid'
 		url  = 'https://maven.nucleoid.xyz/'
+	}
+
+	maven {
+		url "https://cursemaven.com" // CurseMaven for Jade
+		content { includeGroup "curse.maven" }
 	}
 }
 
@@ -80,17 +86,23 @@ dependencies {
 	// ── Text Placeholder API ────────────────────────────────────────────
 	modImplementation include("eu.pb4:placeholder-api:${project.placeholderapi_version}")
 
-	// ── owo-lib ────────────────────────────────────────────
-	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
-	include "io.wispforest:owo-sentinel:${project.owo_version}"
+	// ── Fzzy Config ─────────────────────────────────────────
+	modImplementation "me.fzzyhmstrs:fzzy_config:${project.fzzyConfigVersion}"
 
-	// Enable annotation processor for owo-config
-	annotationProcessor "io.wispforest:owo-lib:${project.owo_version}"
+	// ── Jade ────────────────────────────────────────────
+	modImplementation "curse.maven:jade-324717:6291536"
+
 }
 
 
 loom {
 	accessWidenerPath = file("src/main/resources/adorablehamsterpets.accesswidener")
+
+	mods {
+		adorablehamsterpets {
+			sourceSet sourceSets.main
+		}
+	}
 }
 
 processResources {
@@ -116,7 +128,7 @@ java {
 }
 
 jar {
-	from("LICENSE") {
+	from("LICENSE.md") {
 		rename { "${it}_${project.base.archivesName.get()}"}
 	}
 }

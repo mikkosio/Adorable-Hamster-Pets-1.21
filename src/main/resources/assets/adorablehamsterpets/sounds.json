@@ -274,5 +274,45 @@
   "hamster_dismount": {
     "subtitle": "subtitles.adorablehamsterpets.hamster_dismount",
     "sounds": [ "adorablehamsterpets:hamster_dismount" ]
+  },
+  "hamster_scratch": {
+    "subtitle": "subtitles.adorablehamsterpets.hamster_scratch",
+    "sounds": [ "adorablehamsterpets:hamster_scratch" ]
+  },
+  "hamster_bounce": {
+    "subtitle": "subtitles.adorablehamsterpets.hamster_bounce",
+    "sounds": [ "adorablehamsterpets:hamster_bounce" ]
+  },
+  "alarm_orchestra_hit": {
+    "subtitle": "subtitles.adorablehamsterpets.alarm_orchestra_hit",
+    "sounds": [ "adorablehamsterpets:alarm_orchestra_hit" ]
+  },
+  "hamster_shocked": {
+    "subtitle": "subtitles.adorablehamsterpets.hamster_shocked",
+    "sounds": [ "adorablehamsterpets:hamster_shocked" ]
+  },
+  "hamster_affection1": {
+    "subtitle": "subtitles.adorablehamsterpets.hamster_affection",
+    "sounds": [ "adorablehamsterpets:hamster_affection1" ]
+  },
+  "hamster_affection2": {
+    "subtitle": "subtitles.adorablehamsterpets.hamster_affection",
+    "sounds": [ "adorablehamsterpets:hamster_affection2" ]
+  },
+  "hamster_affection3": {
+    "subtitle": "subtitles.adorablehamsterpets.hamster_affection",
+    "sounds": [ "adorablehamsterpets:hamster_affection3" ]
+  },
+  "diamond_sparkle1": {
+    "subtitle": "subtitles.adorablehamsterpets.diamond_sparkle",
+    "sounds": [ "adorablehamsterpets:diamond_sparkle1" ]
+  },
+  "diamond_sparkle2": {
+    "subtitle": "subtitles.adorablehamsterpets.diamond_sparkle",
+    "sounds": [ "adorablehamsterpets:diamond_sparkle2" ]
+  },
+  "diamond_sparkle3": {
+    "subtitle": "subtitles.adorablehamsterpets.diamond_sparkle",
+    "sounds": [ "adorablehamsterpets:diamond_sparkle3" ]
   }
 }

@@ -37,6 +37,17 @@ public class HamsterFleeGoal<T extends LivingEntity> extends FleeEntityGoal<T> {
 
     // --- 3. Public Static Helper Methods ---
 
+    @Override
+    public void start() {
+        super.start();
+        this.hamster.setActiveCustomGoalDebugName(this.getClass().getSimpleName());
+    }
+
+    @Override public void stop(){
+        super.stop();
+        if (this.hamster.getActiveCustomGoalDebugName().equals(this.getClass().getSimpleName())) { this.hamster.setActiveCustomGoalDebugName("None"); }
+    }
+
     /**
      * Determines if a player is considered "safe" to a wild hamster,
      * meaning the hamster should not flee from them.

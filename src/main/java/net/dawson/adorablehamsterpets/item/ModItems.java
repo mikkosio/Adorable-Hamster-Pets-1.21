@@ -2,6 +2,7 @@ package net.dawson.adorablehamsterpets.item;
 
 import net.dawson.adorablehamsterpets.AdorableHamsterPets;
 import net.dawson.adorablehamsterpets.block.ModBlocks;
+import net.dawson.adorablehamsterpets.config.Configs;
 import net.dawson.adorablehamsterpets.entity.ModEntities;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.client.MinecraftClient;
@@ -34,7 +35,7 @@ public class ModItems {
             new Item(new Item.Settings().maxCount(1)) {
                 @Override
                 public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-                    if (AdorableHamsterPets.CONFIG.uiPreferences.enableItemTooltips()) {
+                    if (Configs.AHP.enableItemTooltips) {
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.hamster_guide_book.hint1").formatted(Formatting.GRAY));
                     }
                     WrittenBookContentComponent content = stack.get(DataComponentTypes.WRITTEN_BOOK_CONTENT);
@@ -73,7 +74,7 @@ public class ModItems {
             new AliasedBlockItem(ModBlocks.GREEN_BEANS_CROP, new Item.Settings()) {
                 @Override
                 public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-                    if (AdorableHamsterPets.CONFIG.uiPreferences.enableItemTooltips()) {
+                    if (Configs.AHP.enableItemTooltips) {
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.green_bean_seeds.hint1").formatted(Formatting.AQUA));
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.green_bean_seeds.hint2").formatted(Formatting.GRAY));
                     } else {
@@ -87,7 +88,7 @@ public class ModItems {
             new AliasedBlockItem(ModBlocks.CUCUMBER_CROP, new Item.Settings()) {
                 @Override
                 public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-                    if (AdorableHamsterPets.CONFIG.uiPreferences.enableItemTooltips()) {
+                    if (Configs.AHP.enableItemTooltips) {
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.cucumber_seeds.hint1").formatted(Formatting.AQUA));
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.cucumber_seeds.hint2").formatted(Formatting.GRAY));
                     } else {
@@ -101,7 +102,7 @@ public class ModItems {
             new Item(new Item.Settings()) {
                 @Override
                 public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-                    if (AdorableHamsterPets.CONFIG.uiPreferences.enableItemTooltips()) {
+                    if (Configs.AHP.enableItemTooltips) {
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.sunflower_seeds.hint1").formatted(Formatting.YELLOW));
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.sunflower_seeds.hint2").formatted(Formatting.GRAY));
                     } else {
@@ -115,7 +116,7 @@ public class ModItems {
             new Item(new Item.Settings().food(ModFoodComponents.CUCUMBER)) {
                 @Override
                 public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-                    if (AdorableHamsterPets.CONFIG.uiPreferences.enableItemTooltips()) {
+                    if (Configs.AHP.enableItemTooltips) {
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.cucumber.hint1").formatted(Formatting.YELLOW));
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.cucumber.hint2").formatted(Formatting.AQUA));
                     } else {
@@ -129,7 +130,7 @@ public class ModItems {
             new Item(new Item.Settings().food(ModFoodComponents.SLICED_CUCUMBER)) {
                 @Override
                 public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-                    if (AdorableHamsterPets.CONFIG.uiPreferences.enableItemTooltips()) {
+                    if (Configs.AHP.enableItemTooltips) {
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.sliced_cucumber.hint1").formatted(Formatting.GREEN));
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.sliced_cucumber.hint2").formatted(Formatting.GRAY));
                     } else {
@@ -143,7 +144,7 @@ public class ModItems {
             new Item(new Item.Settings().food(ModFoodComponents.GREEN_BEANS)) {
                 @Override
                 public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-                    if (AdorableHamsterPets.CONFIG.uiPreferences.enableItemTooltips()) {
+                    if (Configs.AHP.enableItemTooltips) {
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.green_beans.hint1").formatted(Formatting.YELLOW));
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.green_beans.hint2").formatted(Formatting.AQUA));
                     } else {
@@ -157,7 +158,7 @@ public class ModItems {
             new Item(new Item.Settings().food(ModFoodComponents.STEAMED_GREEN_BEANS)) {
                 @Override
                 public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-                    if (AdorableHamsterPets.CONFIG.uiPreferences.enableItemTooltips()) {
+                    if (Configs.AHP.enableItemTooltips) {
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.steamed_green_beans.hint1").formatted(Formatting.GOLD));
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.steamed_green_beans.hint2").formatted(Formatting.GRAY));
                     } else {
@@ -171,7 +172,7 @@ public class ModItems {
             new Item(new Item.Settings().food(ModFoodComponents.HAMSTER_FOOD_MIX).maxCount(16)) {
                 @Override
                 public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-                    if (AdorableHamsterPets.CONFIG.uiPreferences.enableItemTooltips()) {
+                    if (Configs.AHP.enableItemTooltips) {
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.hamster_food_mix.hint1").formatted(Formatting.GREEN));
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.hamster_food_mix.hint2").formatted(Formatting.GRAY));
                     } else {
@@ -185,7 +186,7 @@ public class ModItems {
             new Item(new Item.Settings().food(ModFoodComponents.CHEESE)) {
                 @Override
                 public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-                    if (AdorableHamsterPets.CONFIG.uiPreferences.enableItemTooltips()) {
+                    if (Configs.AHP.enableItemTooltips) {
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.cheese.hint1").formatted(Formatting.GOLD));
                         tooltip.add(Text.translatable("tooltip.adorablehamsterpets.cheese.hint2").formatted(Formatting.GRAY));
                     } else {

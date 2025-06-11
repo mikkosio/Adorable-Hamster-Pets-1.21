@@ -8,6 +8,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtOps;
+import net.minecraft.util.math.BlockPos;
 
 import java.util.Optional;
 
@@ -24,8 +25,34 @@ public record HamsterShoulderData(
         int autoEatCooldownTicks,
         Optional<String> customName,
         int pinkPetalType,
-        boolean cheekPouchUnlocked
+        boolean cheekPouchUnlocked,
+        int animationPersonalityId,
+        // --- Encapsulated Seeking/Sulking Data ---
+        SeekingBehaviorData seekingBehaviorData
 ) {
+
+    // --- Inner Record for Seeking/Sulking Data ---
+    public record SeekingBehaviorData(
+            boolean isPrimedToSeekDiamonds,
+            long foundOreCooldownEndTick,
+            Optional<BlockPos> currentOreTarget,
+            boolean isSulking
+    ) {
+        public static final Codec<SeekingBehaviorData> CODEC = RecordCodecBuilder.create(instance ->
+                instance.group(
+                        Codec.BOOL.fieldOf("isPrimedToSeekDiamonds").orElse(false).forGetter(SeekingBehaviorData::isPrimedToSeekDiamonds),
+                        Codec.LONG.fieldOf("foundOreCooldownEndTick").orElse(0L).forGetter(SeekingBehaviorData::foundOreCooldownEndTick),
+                        BlockPos.CODEC.optionalFieldOf("currentOreTarget").forGetter(SeekingBehaviorData::currentOreTarget),
+                        Codec.BOOL.fieldOf("isSulking").orElse(false).forGetter(SeekingBehaviorData::isSulking)
+                ).apply(instance, SeekingBehaviorData::new)
+        );
+
+        // Default empty instance for SeekingBehaviorData
+        public static SeekingBehaviorData empty() {
+            return new SeekingBehaviorData(false, 0L, Optional.empty(), false);
+        }
+    }
+    // --- End Inner Record ---
 
     public static final Codec<NbtCompound> NBT_COMPOUND_CODEC = Codec.PASSTHROUGH.comapFlatMap(
             (dynamic) -> {
@@ -63,7 +90,10 @@ public record HamsterShoulderData(
                     Codec.INT.fieldOf("autoEatCooldownTicks").forGetter(HamsterShoulderData::autoEatCooldownTicks),
                     Codec.STRING.optionalFieldOf("customName").forGetter(HamsterShoulderData::customName),
                     Codec.INT.fieldOf("pinkPetalType").orElse(0).forGetter(HamsterShoulderData::pinkPetalType),
-                    Codec.BOOL.fieldOf("cheekPouchUnlocked").orElse(false).forGetter(HamsterShoulderData::cheekPouchUnlocked)
+                    Codec.BOOL.fieldOf("cheekPouchUnlocked").orElse(false).forGetter(HamsterShoulderData::cheekPouchUnlocked),
+                    Codec.INT.fieldOf("animationPersonalityId").orElse(1).forGetter(HamsterShoulderData::animationPersonalityId),
+                    // --- Use Codec for the Inner Record ---
+                    SeekingBehaviorData.CODEC.fieldOf("seekingBehaviorData").orElse(SeekingBehaviorData.empty()).forGetter(HamsterShoulderData::seekingBehaviorData)
             ).apply(instance, HamsterShoulderData::new)
     );
 
@@ -82,10 +112,14 @@ public record HamsterShoulderData(
                 ", customName=" + customName.orElse("None") +
                 ", pinkPetalType=" + pinkPetalType +
                 ", cheekPouchUnlocked=" + cheekPouchUnlocked +
+                ", animationPersonalityId=" + animationPersonalityId +
+                ", seekingBehaviorData=" + seekingBehaviorData.toString() +
                 "]";
     }
 
     public static HamsterShoulderData empty() {
-        return new HamsterShoulderData(0, 8.0f, new NbtCompound(), false, false, 0, 0L, 0L, new NbtList(), 0, Optional.empty(), 0, false);
+        return new HamsterShoulderData(0, 8.0f, new NbtCompound(), false, false, 0, 0L, 0L, new NbtList(), 0, Optional.empty(), 0, false, 1,
+                SeekingBehaviorData.empty()
+        );
     }
 }

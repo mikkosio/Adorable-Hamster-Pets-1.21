@@ -1,15 +1,18 @@
 package net.dawson.adorablehamsterpets;
 
+import net.dawson.adorablehamsterpets.attachment.HamsterRenderState;
 import net.dawson.adorablehamsterpets.block.ModBlocks;
 import net.dawson.adorablehamsterpets.client.option.ModKeyBindings;
 import net.dawson.adorablehamsterpets.client.sound.HamsterThrowSoundInstance;
-import net.dawson.adorablehamsterpets.config.ModConfig;
+import net.dawson.adorablehamsterpets.config.AhpConfig;
+import net.dawson.adorablehamsterpets.config.Configs;
 import net.dawson.adorablehamsterpets.entity.ModEntities;
 import net.dawson.adorablehamsterpets.entity.client.HamsterRenderer;
 import net.dawson.adorablehamsterpets.entity.client.ModModelLayers;
 import net.dawson.adorablehamsterpets.entity.client.model.HamsterShoulderModel;
 import net.dawson.adorablehamsterpets.item.ModItems;
 import net.dawson.adorablehamsterpets.networking.payload.StartHamsterThrowSoundPayload;
+import net.dawson.adorablehamsterpets.networking.payload.UpdateHamsterRenderStatePayload;
 import net.dawson.adorablehamsterpets.screen.HamsterInventoryScreen;
 import net.dawson.adorablehamsterpets.screen.ModScreenHandlers;
 import net.fabricmc.api.ClientModInitializer;
@@ -18,33 +21,30 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.dawson.adorablehamsterpets.client.sound.HamsterFlightSoundInstance;
 import net.dawson.adorablehamsterpets.entity.custom.HamsterEntity;
 import net.dawson.adorablehamsterpets.networking.payload.StartHamsterFlightSoundPayload;
 import net.dawson.adorablehamsterpets.sound.ModSounds;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.sound.SoundManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
-import net.dawson.adorablehamsterpets.attachment.ModEntityAttachments; // Import attachments
-import net.dawson.adorablehamsterpets.networking.payload.ThrowHamsterPayload; // Import C2S payload
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents; // Import tick event
-import net.minecraft.client.option.GameOptions; // Import GameOptions
+import net.dawson.adorablehamsterpets.attachment.ModEntityAttachments;
+import net.dawson.adorablehamsterpets.networking.payload.ThrowHamsterPayload;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.hit.HitResult;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class AdorableHamsterPetsClient implements ClientModInitializer {
 
-    // Flag to prevent sending multiple packets per throw action
-    private int throwInputCooldown = 0;
-    private static final int THROW_COOLDOWN_TICKS = 5; // Cooldown in ticks
-
+    // --- Fields for tracking render state ---
+    private static final Set<Integer> renderedHamsterIdsThisTick = new HashSet<>();
+    private static final Set<Integer> renderedHamsterIdsLastTick = new HashSet<>();
 
     @Override
     public void onInitializeClient() {
@@ -61,6 +61,8 @@ public class AdorableHamsterPetsClient implements ClientModInitializer {
         registerPacketHandlers();
         // --- Register Client Tick Event Handler ---
         ClientTickEvents.START_CLIENT_TICK.register(this::handleClientTick);
+        ClientTickEvents.END_CLIENT_TICK.register(this::handleClientTick);
+        ClientTickEvents.END_CLIENT_TICK.register(client -> onEndClientTick());
         // --- End Registration ---
 
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
@@ -68,32 +70,32 @@ public class AdorableHamsterPetsClient implements ClientModInitializer {
         }, ModItems.HAMSTER_SPAWN_EGG);
     }
 
+    public static void onHamsterRendered(int entityId) {
+        renderedHamsterIdsThisTick.add(entityId);
+    }
+
+
     // --- Client Tick Handler Method ---
     private void handleClientTick(MinecraftClient client) {
-        // Cooldown logic (if any) would go here first...
-        // if (throwInputCooldown > 0) { throwInputCooldown--; return; }
+        // --- Ensure Player Exists ---
+        if (client.player == null) {
+            return;
+        }
 
-        // Check if the throw key was pressed
+        // --- Handle Throw Hamster Key ('G' by default) ---
         if (ModKeyBindings.THROW_HAMSTER_KEY.wasPressed()) {
-            ClientPlayerEntity player = client.player;
-            if (player == null) return; // Ensure player exists
+            final AhpConfig currentConfig = AdorableHamsterPets.CONFIG; // Use a local final variable for config
+            if (!currentConfig.enableHamsterThrowing) {
+                client.player.sendMessage(Text.literal("Hamster throwing is disabled in config."), true);
+                // No return here, allow other keybinds to be processed if needed in the future
+            } else {
+                boolean lookingAtReachableBlock = client.crosshairTarget != null && client.crosshairTarget.getType() == HitResult.Type.BLOCK;
+                boolean hasShoulderHamsterClient = client.player.getAttached(ModEntityAttachments.HAMSTER_SHOULDER_DATA) != null;
 
-            // --- Check Config Setting ---
-            final ModConfig config = AdorableHamsterPets.CONFIG;
-            if (!config.featureToggles.enableHamsterThrowing()) {
-                // Send a message to the player explaining why it's disabled
-                player.sendMessage(Text.literal("Hamster throwing is disabled in config."), true);
-                return; // Stop if throwing is disabled
-            }
-            // --- End Check Config Setting ---
-
-            // Check other conditions: not looking at block, has shoulder data
-            boolean lookingAtReachableBlock = client.crosshairTarget != null && client.crosshairTarget.getType() == HitResult.Type.BLOCK;
-            boolean hasShoulderHamsterClient = player.getAttached(ModEntityAttachments.HAMSTER_SHOULDER_DATA) != null;
-
-            if (!lookingAtReachableBlock && hasShoulderHamsterClient) {
-                AdorableHamsterPets.LOGGER.debug("[ClientTick START] Throw key pressed! Sending packet.");
-                ClientPlayNetworking.send(new ThrowHamsterPayload());
+                if (!lookingAtReachableBlock && hasShoulderHamsterClient) {
+                    AdorableHamsterPets.LOGGER.debug("[ClientTick START] Throw key pressed! Sending ThrowHamsterPayload.");
+                    ClientPlayNetworking.send(new ThrowHamsterPayload());
+                }
             }
         }
     }
@@ -199,5 +201,29 @@ public class AdorableHamsterPetsClient implements ClientModInitializer {
         } else {
             AdorableHamsterPets.LOGGER.warn("Received StartHamsterThrowSoundPayload for non-hamster or unknown entity ID: {}", payload.hamsterEntityId());
         }
+    }
+
+    // --- Helper method for tick end logic ---
+    private void onEndClientTick() {
+        // Find hamsters that were rendered last tick but not this tick
+        Set<Integer> stoppedRendering = new HashSet<>(renderedHamsterIdsLastTick);
+        stoppedRendering.removeAll(renderedHamsterIdsThisTick);
+
+        for (Integer entityId : stoppedRendering) {
+            // Send packet indicating we stopped rendering this hamster
+            ClientPlayNetworking.send(new UpdateHamsterRenderStatePayload(entityId, false));
+            // Also update the local state immediately
+            if (MinecraftClient.getInstance().world != null) {
+                Entity entity = MinecraftClient.getInstance().world.getEntityById(entityId);
+                if (entity instanceof HamsterEntity hamster) {
+                    HamsterRenderState state = hamster.getAttachedOrCreate(ModEntityAttachments.HAMSTER_RENDER_STATE, HamsterRenderState::new);
+                    state.setClientRendering(false);
+                }
+            }
+        }
+        // Update the sets for the next tick
+        renderedHamsterIdsLastTick.clear();
+        renderedHamsterIdsLastTick.addAll(renderedHamsterIdsThisTick);
+        renderedHamsterIdsThisTick.clear();
     }
 }

@@ -4,7 +4,8 @@ import net.dawson.adorablehamsterpets.AdorableHamsterPets;
 import net.dawson.adorablehamsterpets.advancement.criterion.ModCriteria;
 import net.dawson.adorablehamsterpets.attachment.HamsterShoulderData;
 import net.dawson.adorablehamsterpets.attachment.ModEntityAttachments;
-import net.dawson.adorablehamsterpets.config.ModConfig;
+import net.dawson.adorablehamsterpets.config.AhpConfig;
+import net.dawson.adorablehamsterpets.config.Configs;
 import net.dawson.adorablehamsterpets.entity.custom.HamsterEntity;
 import net.dawson.adorablehamsterpets.sound.ModSounds;
 import net.minecraft.block.BlockState;
@@ -60,6 +61,8 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     private int adorablehamsterpets$creeperSoundCooldownTicks = 0;
     @Unique
     private String adorablehamsterpets$lastDismountMessageKey = "";
+    @Unique
+    private boolean adorablehamsterpets$isDiamondAlertConditionMet = false;
 
     /**
      * Constructor for the mixin.
@@ -84,7 +87,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             return;
         }
         Random random = world.getRandom();
-        final ModConfig config = AdorableHamsterPets.CONFIG;
+        final AhpConfig config = AdorableHamsterPets.CONFIG;
         // --- End Initial Setup ---
 
         // --- Cooldown Decrement ---
@@ -97,14 +100,17 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             // --- Handle Player Sneaking for Dismount ---
             if (self.isSneaking()) {
                 AdorableHamsterPets.LOGGER.debug("[PlayerTickMixin] Player {} is sneaking. Dismounting hamster.", self.getName().getString());
-                HamsterEntity.spawnFromShoulderData((ServerWorld) world, self, shoulderData);
+                // Pass the flag to spawnFromShoulderData or handle priming here
+                HamsterEntity.spawnFromShoulderData((ServerWorld) world, self, shoulderData, this.adorablehamsterpets$isDiamondAlertConditionMet);
+                this.adorablehamsterpets$isDiamondAlertConditionMet = false; // Reset player's flag after use
+
                 self.removeAttached(ModEntityAttachments.HAMSTER_SHOULDER_DATA);
 
                 // Play dismount sound at player's location
                 world.playSound(null, self.getBlockPos(), ModSounds.HAMSTER_DISMOUNT, SoundCategory.PLAYERS, 0.7f, 1.0f + random.nextFloat() * 0.2f);
 
                 // Send dismount message if enabled
-                if (config.uiPreferences.enableShoulderDismountMessages() && !DISMOUNT_MESSAGE_KEYS.isEmpty()) {
+                if (config.enableShoulderDismountMessages && !DISMOUNT_MESSAGE_KEYS.isEmpty()) {
                     String chosenKey;
                     if (DISMOUNT_MESSAGE_KEYS.size() == 1) {
                         chosenKey = DISMOUNT_MESSAGE_KEYS.get(0);
@@ -127,33 +133,34 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             // --- End Handle Player Sneaking for Dismount ---
 
             // --- Shoulder Diamond Detection ---
-            if (config.featureToggles.enableShoulderDiamondDetection()) {
+            if (config.enableShoulderDiamondDetection) {
                 adorablehamsterpets$diamondCheckTimer++;
                 if (adorablehamsterpets$diamondCheckTimer >= CHECK_INTERVAL_TICKS) {
                     adorablehamsterpets$diamondCheckTimer = 0;
-                    if (isDiamondNearby(self, config.featureToggles.shoulderDiamondDetectionRadius())) {
+                    if (isDiamondNearby(self, config.shoulderDiamondDetectionRadius.get())) {
+                        this.adorablehamsterpets$isDiamondAlertConditionMet = true; // SET FLAG
                         if (adorablehamsterpets$diamondSoundCooldownTicks == 0) {
                             world.playSound(null, self.getBlockPos(),
                                     ModSounds.getRandomSoundFrom(ModSounds.HAMSTER_DIAMOND_SNIFF_SOUNDS, random),
-                                    SoundCategory.NEUTRAL, 2.5f, 1.0f); // Boosted volume because the sound effect itself is relatively quiet
+                                    SoundCategory.NEUTRAL, 2.5f, 1.0f);
                             self.sendMessage(Text.translatable("message.adorablehamsterpets.diamond_nearby").formatted(Formatting.AQUA), true);
-                            adorablehamsterpets$diamondSoundCooldownTicks = random.nextBetween(140, 200); // 7-10 seconds
+                            adorablehamsterpets$diamondSoundCooldownTicks = random.nextBetween(140, 200);
 
-                            // --- Trigger Advancement Criterion ---
                             ModCriteria.HAMSTER_DIAMOND_ALERT_TRIGGERED.trigger((ServerPlayerEntity) self);
-                            // --- End Trigger ---
                         }
+                    } else {
+                        this.adorablehamsterpets$isDiamondAlertConditionMet = false; // RESET FLAG
                     }
                 }
             }
             // --- End Shoulder Diamond Detection ---
 
             // --- Shoulder Creeper Detection ---
-            if (config.featureToggles.enableShoulderCreeperDetection()) {
+            if (config.enableShoulderCreeperDetection) {
                 adorablehamsterpets$creeperCheckTimer++;
                 if (adorablehamsterpets$creeperCheckTimer >= CHECK_INTERVAL_TICKS) {
                     adorablehamsterpets$creeperCheckTimer = 0;
-                    if (creeperSeesPlayer(self, config.featureToggles.shoulderCreeperDetectionRadius())) {
+                    if (creeperSeesPlayer(self, config.shoulderCreeperDetectionRadius.get())) {
                         if (adorablehamsterpets$creeperSoundCooldownTicks == 0) {
                             world.playSound(null, self.getBlockPos(),
                                     ModSounds.getRandomSoundFrom(ModSounds.HAMSTER_CREEPER_DETECT_SOUNDS, random),

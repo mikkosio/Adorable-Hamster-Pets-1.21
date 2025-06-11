@@ -2,6 +2,7 @@ package net.dawson.adorablehamsterpets.block;
 
 import net.dawson.adorablehamsterpets.AdorableHamsterPets;
 import net.dawson.adorablehamsterpets.block.custom.*;
+import net.dawson.adorablehamsterpets.config.Configs;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -65,7 +66,7 @@ public class ModBlocks {
             @Override
             public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
                 // --- Config Check for Tooltips ---
-                if (AdorableHamsterPets.CONFIG.uiPreferences.enableItemTooltips()) {
+                if (Configs.AHP.enableItemTooltips) {
                     String translationKey = this.getTranslationKey(stack); // e.g., "block.adorablehamsterpets.wild_green_bean_bush"
                     // Check which block it is to apply specific hints
                     if (block instanceof WildGreenBeanBushBlock || block instanceof WildCucumberBushBlock) {

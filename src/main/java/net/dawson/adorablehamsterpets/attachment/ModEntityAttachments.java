@@ -26,6 +26,11 @@ public class ModEntityAttachments {
                     }
             );
 
+    public static final AttachmentType<HamsterRenderState> HAMSTER_RENDER_STATE =
+            AttachmentRegistry.create(
+                    Identifier.of(AdorableHamsterPets.MOD_ID, "hamster_render_state")
+            );
+
     public static void registerAttachments() {
         AdorableHamsterPets.LOGGER.info("Registering Mod Entity Attachments for " + AdorableHamsterPets.MOD_ID);
     }
