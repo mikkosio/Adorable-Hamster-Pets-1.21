@@ -180,5 +180,7 @@
   "config.adorablehamsterpets.main.helpAndResources.reportBug": "Report a Bug",
   "config.adorablehamsterpets.main.helpAndResources.reportBug.desc": "Found a game-breaking issue? Or a hamster phasing through the floor? Let me know on Github. The more details, the better. And believe it or not, I do check this frequently.",
   "config.adorablehamsterpets.main.helpAndResources.visitWebsite": "Visit My Website",
-  "config.adorablehamsterpets.main.helpAndResources.visitWebsite.desc": "Shameless plug for my other, less-rodent-focused work. Click if you dare."
+  "config.adorablehamsterpets.main.helpAndResources.visitWebsite.desc": "Shameless plug for my other, less-rodent-focused work. Click if you dare.",
+  "config.adorablehamsterpets.main.helpAndResources.joinDiscord": "Join Discord",
+  "config.adorablehamsterpets.main.helpAndResources.joinDiscord.desc": "Join 'The Hamster Pouch' official Discord server. A place to share screenshots, get support, or just witness the ongoing development chaos. You're invited."
 }

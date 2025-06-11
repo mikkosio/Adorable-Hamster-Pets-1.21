@@ -27,6 +27,52 @@ public class AhpConfig extends Config {
         super(Identifier.of(AdorableHamsterPets.MOD_ID, "main"));
     }
 
+    // --- Help & Other Distractions ---
+    @Translatable.Name("Help & Other Distractions")
+    @Translatable.Desc("Buttons for when you’re lost, bored, or met a bug that’s not just existential hamster angst.")
+    public ConfigGroup helpAndResources = new ConfigGroup("helpAndResources", false);
+
+    @ClientModifiable
+    @Translatable.Name("I Lost My Book!")
+    @Translatable.Desc("Misplaced your invaluable tome of rodent wisdom? Click here. I won't tell anyone.")
+    public ConfigAction giveGuideBook = new ConfigAction.Builder()
+            .title(Text.translatable("config.adorablehamsterpets.main.helpAndResources.giveGuideBook"))
+            .desc(Text.translatable("config.adorablehamsterpets.main.helpAndResources.giveGuideBook.desc"))
+            .decoration(TextureIds.INSTANCE.getDECO_BOOK())
+            .build(new ClickEvent(ClickEvent.Action.RUN_COMMAND,
+                    "/function adorablehamsterpets:technical/give_guide_book"));
+
+    @ClientModifiable
+    @Translatable.Name("Report a Bug")
+    @Translatable.Desc("Found a game-breaking issue? Or a hamster phasing through the floor? Let me know on Github. The more details, the better. And believe it or not, I do check this frequently.")
+    public ConfigAction reportBug = new ConfigAction.Builder()
+            .title(Text.translatable("config.adorablehamsterpets.main.helpAndResources.reportBug"))
+            .desc(Text.translatable("config.adorablehamsterpets.main.helpAndResources.reportBug.desc"))
+            .decoration(TextureIds.INSTANCE.getDECO_LINK())
+            .build(new ClickEvent(ClickEvent.Action.OPEN_URL,
+                    "https://github.com/DawsonBodenhamer/Adorable-Hamster-Pets-1.21/issues"));
+
+    @ClientModifiable
+    @Translatable.Name("Join Discord")
+    @Translatable.Desc("Join 'The Hamster Pouch' official Discord server. A place to share screenshots, get support, or just witness the ongoing development chaos. You're invited.")
+    public ConfigAction joinDiscord = new ConfigAction.Builder()
+            .title(Text.translatable("config.adorablehamsterpets.main.helpAndResources.joinDiscord"))
+            .desc(Text.translatable("config.adorablehamsterpets.main.helpAndResources.joinDiscord.desc"))
+            .decoration(TextureIds.INSTANCE.getDECO_BUTTON_CLICK())
+            .build(new ClickEvent(ClickEvent.Action.OPEN_URL,
+                    "https://discord.gg/w54mk5bqdf"));
+
+    @ClientModifiable
+    @ConfigGroup.Pop
+    @Translatable.Name("Visit My Website")
+    @Translatable.Desc("Shameless plug for my other, less-rodent-focused work. Click if you dare.")
+    public ConfigAction visitWebsite = new ConfigAction.Builder()
+            .title(Text.translatable("config.adorablehamsterpets.main.helpAndResources.visitWebsite"))
+            .desc(Text.translatable("config.adorablehamsterpets.main.helpAndResources.visitWebsite.desc"))
+            .decoration(TextureIds.INSTANCE.getDECO_LINK())
+            .build(new ClickEvent(ClickEvent.Action.OPEN_URL,
+                    "https://www.fortheking.design"));
+
     // --- UI & Quality of Life ---
     @Translatable.Name("UI & Quality of Life")
     @Translatable.Desc("Because Sanity is Overrated")
@@ -52,42 +98,6 @@ public class AhpConfig extends Config {
     @Translatable.Name("Enable Jade Hamster Debug Info")
     @Translatable.Desc("More stats than anyone asked for. Defaults to off—mercifully.")
     public boolean enableJadeHamsterDebugInfo = false;
-
-    // --- Help & Other Distractions ---
-    @Translatable.Name("Help & Other Distractions")
-    @Translatable.Desc("Buttons for when you’re lost, bored, or met a bug that’s not just existential hamster angst.")
-    public ConfigGroup helpAndResources = new ConfigGroup("helpAndResources", true);
-
-    @ClientModifiable
-    @Translatable.Name("I Lost My Book!")
-    @Translatable.Desc("Misplaced your invaluable tome of rodent wisdom? Click here. I won't tell anyone.")
-    public ConfigAction giveGuideBook = new ConfigAction.Builder()
-            .title(Text.translatable("config.adorablehamsterpets.main.helpAndResources.giveGuideBook"))
-            .desc(Text.translatable("config.adorablehamsterpets.main.helpAndResources.giveGuideBook.desc"))
-            .decoration(TextureIds.INSTANCE.getDECO_BOOK())
-            .build(new ClickEvent(ClickEvent.Action.RUN_COMMAND,
-                    "/function adorablehamsterpets:technical/give_guide_book"));
-
-    @ClientModifiable
-    @Translatable.Name("Report a Bug")
-    @Translatable.Desc("Found a game-breaking issue? Or a hamster phasing through the floor? Let me know on Github. The more details, the better. And believe it or not, I do check this frequently.")
-    public ConfigAction reportBug = new ConfigAction.Builder()
-            .title(Text.translatable("config.adorablehamsterpets.main.helpAndResources.reportBug"))
-            .desc(Text.translatable("config.adorablehamsterpets.main.helpAndResources.reportBug.desc"))
-            .decoration(TextureIds.INSTANCE.getDECO_LINK())
-            .build(new ClickEvent(ClickEvent.Action.OPEN_URL,
-                    "https://github.com/DawsonBodenhamer/Adorable-Hamster-Pets-1.21/issues"));
-
-    @ClientModifiable
-    @ConfigGroup.Pop
-    @Translatable.Name("Visit My Website")
-    @Translatable.Desc("Shameless plug for my other, less-rodent-focused work. Click if you dare.")
-    public ConfigAction visitWebsite = new ConfigAction.Builder()
-            .title(Text.translatable("config.adorablehamsterpets.main.helpAndResources.visitWebsite"))
-            .desc(Text.translatable("config.adorablehamsterpets.main.helpAndResources.visitWebsite.desc"))
-            .decoration(TextureIds.INSTANCE.getDECO_LINK())
-            .build(new ClickEvent(ClickEvent.Action.OPEN_URL,
-                    "https://www.fortheking.design"));
 
     // --- Core Feature Toggles ---
     @Translatable.Name("Core Feature Toggles")

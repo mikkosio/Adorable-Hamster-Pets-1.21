@@ -1,6 +1,6 @@
-<p> <img src="https://i.imgur.com/UtXZsN7.png" alt="Adorable Hamster Pets Banner Image" width="2000" /> </p>
+<p> <img src="https://i.imgur.com/m74ioSY.png" alt="Adorable Hamster Pets Banner Image" width="2000" /> </p>
 
-# <font color="orange">Because every great realm needs a tiny, squeaky snack-bandit.</font>
+# <font color="orange">Because every great digital realm needs a tiny, squeaky snack-bandit.</font>
 
 Let's go back to the beginning. You looked upon your blocky domain, surveyed your automated farms spewing resources you probably don't need, your enchanted gear shimmering with overkill, your… unique architectural choices, and declared, "Needs more rodents."
 
