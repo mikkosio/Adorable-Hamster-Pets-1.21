@@ -18,22 +18,23 @@ Or maybe you didn't. Doesn't matter. You're here now, considering adding hamster
 <a href="https://discord.gg/w54mk5bqdf">
 <div align="right" style="margin-left:30px;">
   <img
-    src="https://discord.com/api/guilds/1382334723333820568/widget.png?style=banner3"
+    src="https://discord.com/api/guilds/1382334723333820568/widget.png?style=banner4"
     align="right"
     hspace="30"
-    width="350"
+    width="200"
     alt="Join the Adorable Hamster Pets Discord!" />
 </div>
 </a>
 
 **Adorable Hamster Pets** introduces, against potentially better judgment, hamsters to Minecraft. Tiny, fuzzy, occasionally helpful, frequently underfoot creatures destined to become your new favorite source of minor inventory clutter. They squeak, bounce, fly... if you throw them... and silently judge your life choices from the questionable safety of your shoulder. You can tame them (if you're patient), feed them various vegetable concoctions (results may vary), and even launch them in an attack. (Consult your local ethics committee. Or don't. I'm not your conscience).
 
-## <font color="teal">Features</font>
+<p> <img src="https://i.imgur.com/GxXluZP.png" alt="Adorable Hamster Pets Banner Image" width="2000" style="margin-top:30px;"/> </p>
+
 
 ### Click each to expand: 👇🏼
 
 <details>
-<summary>Biome Variants & Genetics</summary>
+<summary>🎨 Biome Variants & Genetics</summary>
 
 ..........................
 
@@ -54,7 +55,7 @@ Prepare for a veritable explosion of fur colors! With nine base coats and eight 
 </details>
 
 <details>
-<summary>Taming & Sitting</summary>
+<summary>🤝 Taming & Sitting</summary>
 
 ..........................
 
@@ -64,7 +65,7 @@ Bribe them with enough Sliced Cucumber, and they'll follow you like a furry, ank
 </details>
 
 <details>
-<summary>Advanced Napping Protocols</summary>
+<summary>😴 Advanced Napping Protocols</summary>
 
 ..........................
 
@@ -76,7 +77,7 @@ Wild hamsters also have a rather bouncy transition into their naps.
 </details>
 
 <details>
-<summary>Unique Animation Personalities</summary>
+<summary>🎭 Unique Animation Personalities</summary>
 
 ..........................
 
@@ -86,7 +87,7 @@ Not all hamsters are created equal. Upon birth, each hamster is assigned one of 
 </details>
 
 <details>
-<summary>Shoulder Surfing— with *Perks*</summary>
+<summary>🧀 Shoulder Surfing— with *Perks*</summary>
 ..........................
 
 Lure your nearest owned hamster onto your shoulder with the irresistible siren call of **Cheese**. (Or if you prefer boring explanations: right-click them with it). They'll offer helpful alerts about nearby Creepers and possibly valuable shiny rocks that start with a D, and rhyme with Simon. Kind of. They almost rhyme. Whatever. Complete with "scurrying onto your shoulder" and "leaping off in a huff" sound effects.
@@ -95,7 +96,7 @@ Lure your nearest owned hamster onto your shoulder with the irresistible siren c
 </details>
 
 <details>
-<summary>Furry Freelance Prospecting</summary>
+<summary>💎 Furry Freelance Prospecting</summary>
 ..........................
 
 So, your shoulder-mounted furball just made a series of excited squeaks and sniffs, hinting at nearby diamonds? Excellent. Now for the fun part. Dismount your tiny prospector. If it was indeed onto something shiny, it might just take matters into its own feet.
@@ -112,7 +113,7 @@ This whole ore-seeking escapade is, of course, configurable.
 </details>
 
 <details>
-<summary>Cheek Pouches of Holding</summary>
+<summary>👜 Cheek Pouches of Holding</summary>
 
 ..........................
 
@@ -122,7 +123,7 @@ Yes, inventory... *in their face*. Feed them **Hamster Food Mix** once to earn t
 </details>
 
 <details>
-<summary>Hamster Kung Fu Techniques</summary>
+<summary>💥 Hamster Kung Fu Techniques</summary>
 
 ..........................
 
@@ -133,7 +134,7 @@ Yes, inventory... *in their face*. Feed them **Hamster Food Mix** once to earn t
 </details>
 
 <details>
-<summary>Decorate Your Hamsters</summary>
+<summary>🌸 Decorate Your Hamsters</summary>
 
 ..........................
 
@@ -143,7 +144,7 @@ Found some **Pink Petals**? Right-click your tamed hamster to bestow upon it a s
 </details>
 
 <details>
-<summary>New Questionable Flora</summary>
+<summary>🌿 New Questionable Flora</summary>
 
 ..........................
 
@@ -154,7 +155,7 @@ Found some **Pink Petals**? Right-click your tamed hamster to bestow upon it a s
 </details>
 
 <details>
-<summary>Exciting New Foodstuffs</summary>
+<summary>🥕 Exciting New Foodstuffs</summary>
 
 ..........................
 
@@ -167,7 +168,7 @@ Found some **Pink Petals**? Right-click your tamed hamster to bestow upon it a s
 </details>
 
 <details>
-<summary>The Hamster Tips Guide Book</summary>
+<summary>📖 The Hamster Tips Guide Book</summary>
 
 ..........................
 
@@ -177,7 +178,7 @@ You get one automatically the first time you join a world with this mod (unless 
 </details>
 
 <details>
-<summary>Immersive Advancements</summary>
+<summary>🏆 Immersive Advancements</summary>
 
 ..........................
 
@@ -343,4 +344,4 @@ You can check out their handiwork here:
 
 ---
 
-### Now go enjoy the squeaks. Or mute them. Your world, your rules.
+### Now go enjoy the squeaks. Or mute them. Whatever.
