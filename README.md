@@ -2,6 +2,15 @@
 
 # <font color="orange">Because every great digital realm needs a tiny, squeaky snack-bandit.</font>
 
+<a href="https://ko-fi.com/dawsonbodenhamer" target="_blank">
+  <img
+    src="https://i.imgur.com/trr80ww.png"
+    alt="Buy me a coffee on Ko-fi"
+    align="right"
+    hspace="30"
+    width="120" />
+</a>
+
 Let's go back to the beginning. You looked upon your blocky domain, surveyed your automated farms spewing resources you probably don't need, your enchanted gear shimmering with overkill, your… unique architectural choices, and declared, "Needs more rodents."
 
 Or maybe you didn't. Doesn't matter. You're here now, considering adding hamsters to a world already teeming with exploding plants and questionable physics. A truly inspired decision.
@@ -18,8 +27,6 @@ Or maybe you didn't. Doesn't matter. You're here now, considering adding hamster
 </a>
 
 **Adorable Hamster Pets** introduces, against potentially better judgment, hamsters to Minecraft. Tiny, fuzzy, occasionally helpful, frequently underfoot creatures destined to become your new favorite source of minor inventory clutter. They squeak, bounce, fly... if you throw them... and silently judge your life choices from the questionable safety of your shoulder. You can tame them (if you're patient), feed them various vegetable concoctions (results may vary), and even launch them in an attack. (Consult your local ethics committee. Or don't. I'm not your conscience).
-
----
 
 ## <font color="teal">Features</font>
 
