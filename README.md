@@ -254,6 +254,30 @@ Fun fact: I've already implemented new features like the custom advancement tree
 
 ---
 
+## <font color="teal">Forge and Neoforge Compatibility</font>
+<details>
+<summary>Click to expand.</summary>
+
+This mod is officially developed for **Fabric**. That's where it's built, tested, and guaranteed to work as intended (or as intended as a mod about throwable hamsters can be).
+
+However, thanks to the tireless work of the Sinytra Connector team and a tip from Reddit user [`aussiedutchlover`](https://www.reddit.com/user/aussiedutchlover/), you can get this mod running on **NeoForge** right now. I've tested it myself, and it works!
+
+**To run on NeoForge, you will need:**
+*   **Adorable Hamster Pets** (the regular Fabric version)
+*   [**Sinytra Connector**](https://modrinth.com/mod/sinytra-connector) (The magic that bridges the gap)
+*   [**Forgified Fabric API**](https://modrinth.com/mod/forgified-fabric-api) (The Fabric API, but for Forge/NeoForge)
+*   All of this mod's other dependencies (like GeckoLib and Fzzy Config), but their **NeoForge versions**.
+
+Here's a screenshot of my exact testing setup: <p> <img src="https://i.imgur.com/geJY9hA.png" alt="Adorable Hamster Pets Banner Image" width="2000"/> </p>
+
+**The Big Disclaimer:** While this workaround is functional, it is **unofficial**. I do not officially support NeoForge yet. If you run into bugs while using Connector, please mention it in your bug report, but be aware that some issues may be outside of my control.
+
+Official ports to NeoForge and/or Forge are on the agenda, but for now, this is your best bet for cross-loader hamster shenanigans.
+
+</details>
+
+---
+
 ## <font color="teal">Installation (The Annoying But Necessary Bit)</font>
 <details>
 <summary>Click to expand.</summary>
