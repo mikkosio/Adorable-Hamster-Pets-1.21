@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.2.1] - 2025-06-12
 
 ### Fixed
-- Resolved a critical crash that would occur when exiting a world to the main menu. This was caused by the mod attempting to send network packets after the connection to the server had already closed.
+- Resolved a critical crash that would occur when exiting a world to the main menu. This was caused by the mod attempting to send network packets after the connection to the server had already closed. Enjoy!
 
 ---
 
