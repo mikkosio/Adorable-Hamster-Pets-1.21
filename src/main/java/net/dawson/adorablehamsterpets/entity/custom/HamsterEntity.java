@@ -87,6 +87,8 @@ import java.util.*;
 import static net.dawson.adorablehamsterpets.sound.ModSounds.HAMSTER_CELEBRATE_SOUNDS;
 import static net.dawson.adorablehamsterpets.sound.ModSounds.getRandomSoundFrom;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 public class HamsterEntity extends TameableEntity implements GeoEntity, ImplementedInventory {
 
@@ -2501,16 +2503,17 @@ public class HamsterEntity extends TameableEntity implements GeoEntity, Implemen
                                 float volume = blockState.isOf(Blocks.GRAVEL)
                                         ? (DEFAULT_FOOTSTEP_VOLUME * GRAVEL_VOLUME_MODIFIER)
                                         : DEFAULT_FOOTSTEP_VOLUME;
-                                MinecraftClient.getInstance().getSoundManager().play(
-                                        new PositionedSoundInstance(
-                                                stepSound,              // The dynamic sound from the block
-                                                SoundCategory.NEUTRAL,
-                                                volume,                   // Use the calculated volume
-                                                group.getPitch() * 1.5F,  // Pitch from the block's sound group
-                                                this.random,
-                                                this.getX(), this.getY(), this.getZ()
-                                        )
-                                );
+                                // MinecraftClient.getInstance().getSoundManager().play(
+                                //         new PositionedSoundInstance(
+                                //                 stepSound,              // The dynamic sound from the block
+                                //                 SoundCategory.NEUTRAL,
+                                //                 volume,                   // Use the calculated volume
+                                //                 group.getPitch() * 1.5F,  // Pitch from the block's sound group
+                                //                 this.random,
+                                //                 this.getX(), this.getY(), this.getZ()
+                                //         )
+                                // );
+                                this.clientPlaySound(stepSound, volume, group.getPitch() * 1.5F);
                             }
                         }
                     }
@@ -2526,18 +2529,20 @@ public class HamsterEntity extends TameableEntity implements GeoEntity, Implemen
                                 float randomPitchAddition = this.random.nextFloat() * 0.2f;
                                 float finalPitch = (basePitch * 1.2f) + randomPitchAddition; // Base pitch adjustment + random positive addition
 
-                                MinecraftClient.getInstance().getSoundManager().play(
-                                        new PositionedSoundInstance(
-                                                bounceSound,            // SoundEvent
-                                                SoundCategory.NEUTRAL,  // Category
-                                                0.6f,                   // Volume
-                                                finalPitch,             // Pitch
-                                                this.random,            // Random
-                                                this.getX(),            // X position
-                                                this.getY(),            // Y position
-                                                this.getZ()             // Z position
-                                        )
-                                );
+                                // MinecraftClient.getInstance().getSoundManager().play(
+                                //         new PositionedSoundInstance(
+                                //                 bounceSound,            // SoundEvent
+                                //                 SoundCategory.NEUTRAL,  // Category
+                                //                 0.6f,                   // Volume
+                                //                 finalPitch,             // Pitch
+                                //                 this.random,            // Random
+                                //                 this.getX(),            // X position
+                                //                 this.getY(),            // Y position
+                                //                 this.getZ()             // Z position
+                                //         )
+                                // );
+                                this.clientPlaySound(bounceSound, 0.6f, finalPitch);
+
                                 AdorableHamsterPets.LOGGER.debug("[SoundKeyframe CLIENT] Played bounce sound: {} at pitch {}", bounceSound.getId().getPath(), finalPitch);
                             } else {
                                 AdorableHamsterPets.LOGGER.debug("[SoundKeyframe CLIENT] Could not get random bounce sound for 'hamster_beg_bounce'.");
@@ -3077,6 +3082,7 @@ public class HamsterEntity extends TameableEntity implements GeoEntity, Implemen
      * {@link HamsterCleaningSoundInstance}. This ensures the sound loops
      * correctly for the duration of the cleaning animation.
      */
+    @Environment(EnvType.CLIENT)
     private void tickCleaningSound() {
         if (!this.getWorld().isClient()) return;
 
@@ -3089,5 +3095,21 @@ public class HamsterEntity extends TameableEntity implements GeoEntity, Implemen
             this.cleaningSoundInstance = new HamsterCleaningSoundInstance(this);
             MinecraftClient.getInstance().getSoundManager().play(this.cleaningSoundInstance);
         }
+    }
+    
+    @Environment(EnvType.CLIENT)
+    private void clientPlaySound(SoundEvent sound, float volume, float pitch) {
+        MinecraftClient.getInstance().getSoundManager().play(
+            new PositionedSoundInstance(
+                sound,                  // SoundEvent
+                SoundCategory.NEUTRAL,  // Category
+                volume,                 // Volume
+                pitch,                  // Pitch
+                this.random,            // Random
+                this.getX(),            // X position
+                this.getY(),            // Y position
+                this.getZ()             // Z position
+            )
+        );
     }
 }

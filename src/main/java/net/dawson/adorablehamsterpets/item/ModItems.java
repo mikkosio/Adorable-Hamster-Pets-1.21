@@ -28,6 +28,9 @@ import net.dawson.adorablehamsterpets.sound.ModSounds; // Assuming ModSounds is 
 
 import java.util.List;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+
 public class ModItems {
 
     // --- 1. Constants and Static Item Definitions ---
@@ -55,10 +58,11 @@ public class ModItems {
                     ItemStack itemStack = user.getStackInHand(hand);
                     if (itemStack.contains(DataComponentTypes.WRITTEN_BOOK_CONTENT)) {
                         if (world.isClient) {
-                            BookScreen.Contents contents = BookScreen.Contents.create(itemStack);
-                            if (contents != null) {
-                                MinecraftClient.getInstance().setScreen(new BookScreen(contents));
-                            }
+                            // BookScreen.Contents contents = BookScreen.Contents.create(itemStack);
+                            // if (contents != null) {
+                            //     MinecraftClient.getInstance().setScreen(new BookScreen(contents));
+                            // }
+                            openBook(itemStack);
                         }
                         user.incrementStat(Stats.USED.getOrCreateStat(this));
                         return TypedActionResult.success(itemStack, world.isClient());
@@ -234,6 +238,15 @@ public class ModItems {
     // --- 3. Private Helper Methods ---
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(AdorableHamsterPets.MOD_ID, name), item);
+    }
+
+
+    @Environment(EnvType.CLIENT)
+    private static void openBook(ItemStack stack) {
+        BookScreen.Contents contents = BookScreen.Contents.create(stack);
+        if (contents != null) {
+            MinecraftClient.getInstance().setScreen(new BookScreen(contents));
+        }
     }
     // --- End 3. Private Helper Methods ---
 }
